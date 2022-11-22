@@ -4,6 +4,7 @@
 #include "qpushbutton.h"
 #include <QMainWindow>
 #include "studentwindow.h"
+
 #include <QtNetwork>
 #include <QJsonObject>
 #include "databaseurl.h"
@@ -27,12 +28,15 @@ public:
 
 private slots:
     void loginClicked();
+
     void loginSlot(QNetworkReply* reply);
     void moveToIndex(int);
+
 
 private:
     Ui::MainWindow *ui;
     QPushButton* loginButton;
+    
     StudentWindow *studentWindow;
     QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
@@ -43,5 +47,6 @@ private:
     UserMenu userMenu;
     CashWithdrawal cashWithdrawal;
     Balance balance;
+
 };
 #endif // MAINWINDOW_H

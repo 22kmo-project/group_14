@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->stackedWidget->insertWidget(4, &balance);
 
     QPixmap bkgnd("../img/background.png"); // These 5 lines sets background image to the window
+
     bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Window, bkgnd);
@@ -29,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     this->statusBar()->setSizeGripEnabled(false); // Hides resizing icon from bottom right corner
     this->setFixedSize(QSize(800, 600)); // Prevents resizing window
+
 }
 
 MainWindow::~MainWindow()
@@ -52,6 +54,7 @@ void MainWindow::loginClicked()
     loginManager = new QNetworkAccessManager(this);
     connect(loginManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(loginSlot(QNetworkReply*)));
 
+
     reply = loginManager->post(request, QJsonDocument(jsonObj).toJson());
 }
 
@@ -67,6 +70,7 @@ void MainWindow::loginSlot(QNetworkReply *reply)
         ui->infoLabel->setVisible(1);
         ui->infoLabel->setText("Server not responding");
         ui->stackedWidget->setCurrentIndex(1); // Poista rivin kommentointi jos tietokantaserveri ei ole vielä toiminnassa ja haluat testata koodia.
+
     }
     else
     {
@@ -82,6 +86,7 @@ void MainWindow::loginSlot(QNetworkReply *reply)
                 ui->idCardLine->clear();
                 ui->passwordLine->clear();
                 ui->infoLabel->setVisible(1);
+
                 ui->infoLabel->setText("Card number and PIN code don't match");
             }
             else
@@ -96,3 +101,16 @@ void MainWindow::moveToIndex(int index)
 {
     ui->stackedWidget->setCurrentIndex(index);
 }
+                //qDebug()<< "Test wasn't 0" << test;
+                studentWindow=new StudentWindow(idCard);
+                studentWindow->setWebToken(responseData);
+                studentWindow->show();
+            }
+        }
+    }
+
+}
+
+
+
+
