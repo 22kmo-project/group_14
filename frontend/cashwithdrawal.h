@@ -16,7 +16,8 @@ public:
     ~CashWithdrawal();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_button_back_clicked();
+    void on_button_otheramount_clicked();
 
 private:
     Ui::CashWithdrawal *ui;

@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "charity.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -11,12 +12,15 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&chooseAccount, SIGNAL(buttonClicked(int)), this, SLOT(moveToIndex(int)));
     connect(&userMenu, SIGNAL(buttonClicked(int)), this, SLOT(moveToIndex(int)));
     connect(&cashWithdrawal, SIGNAL(buttonClicked(int)), this, SLOT(moveToIndex(int)));
+    
+    connect(&charity, SIGNAL(buttonClicked(int)), this, SLOT(moveToIndex(int)));
     connect(&balance, SIGNAL(buttonClicked(int)), this, SLOT(moveToIndex(int)));
 
     ui->stackedWidget->insertWidget(1, &chooseAccount); // Lisätään tehdyt widgetit, eli yksittäiset pankkiautomaatin näkymät, ja annetaan niille indeksit
     ui->stackedWidget->insertWidget(2, &userMenu);
     ui->stackedWidget->insertWidget(3, &cashWithdrawal);
-    ui->stackedWidget->insertWidget(4, &balance);
+    ui->stackedWidget->insertWidget(4, &charity);
+    ui->stackedWidget->insertWidget(5, &balance);
 
     QPixmap bkgnd("../img/background.png"); // These 5 lines sets background image to the window
 
@@ -30,7 +34,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     this->statusBar()->setSizeGripEnabled(false); // Hides resizing icon from bottom right corner
     this->setFixedSize(QSize(800, 600)); // Prevents resizing window
-
 }
 
 MainWindow::~MainWindow()
@@ -54,7 +57,6 @@ void MainWindow::loginClicked()
     loginManager = new QNetworkAccessManager(this);
     connect(loginManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(loginSlot(QNetworkReply*)));
 
-
     reply = loginManager->post(request, QJsonDocument(jsonObj).toJson());
 }
 
@@ -70,7 +72,6 @@ void MainWindow::loginSlot(QNetworkReply *reply)
         ui->infoLabel->setVisible(1);
         ui->infoLabel->setText("Server not responding");
         ui->stackedWidget->setCurrentIndex(1); // Poista rivin kommentointi jos tietokantaserveri ei ole vielä toiminnassa ja haluat testata koodia.
-
     }
     else
     {
@@ -86,7 +87,6 @@ void MainWindow::loginSlot(QNetworkReply *reply)
                 ui->idCardLine->clear();
                 ui->passwordLine->clear();
                 ui->infoLabel->setVisible(1);
-
                 ui->infoLabel->setText("Card number and PIN code don't match");
             }
             else
@@ -101,16 +101,3 @@ void MainWindow::moveToIndex(int index)
 {
     ui->stackedWidget->setCurrentIndex(index);
 }
-                //qDebug()<< "Test wasn't 0" << test;
-                studentWindow=new StudentWindow(idCard);
-                studentWindow->setWebToken(responseData);
-                studentWindow->show();
-            }
-        }
-    }
-
-}
-
-
-
-
