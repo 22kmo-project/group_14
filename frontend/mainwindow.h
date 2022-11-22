@@ -7,8 +7,12 @@
 
 #include <QtNetwork>
 #include <QJsonObject>
-
 #include "databaseurl.h"
+
+#include <usermenu.h>
+#include <chooseaccount.h>
+#include <cashwithdrawal.h>
+#include <balance.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -26,15 +30,23 @@ private slots:
     void loginClicked();
 
     void loginSlot(QNetworkReply* reply);
+    void moveToIndex(int);
+
 
 private:
     Ui::MainWindow *ui;
     QPushButton* loginButton;
-
+    
     StudentWindow *studentWindow;
     QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
     QByteArray responseData;
     QString idCard;
+
+    ChooseAccount chooseAccount;
+    UserMenu userMenu;
+    CashWithdrawal cashWithdrawal;
+    Balance balance;
+
 };
 #endif // MAINWINDOW_H

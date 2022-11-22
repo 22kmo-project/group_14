@@ -8,11 +8,28 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     connect(ui->loginButton, &QPushButton::clicked, this, &MainWindow::loginClicked);
 
-    QPixmap bkgnd("../img/background.png");
+    connect(&chooseAccount, SIGNAL(buttonClicked(int)), this, SLOT(moveToIndex(int)));
+    connect(&userMenu, SIGNAL(buttonClicked(int)), this, SLOT(moveToIndex(int)));
+    connect(&cashWithdrawal, SIGNAL(buttonClicked(int)), this, SLOT(moveToIndex(int)));
+    connect(&balance, SIGNAL(buttonClicked(int)), this, SLOT(moveToIndex(int)));
+
+    ui->stackedWidget->insertWidget(1, &chooseAccount); // Lisätään tehdyt widgetit, eli yksittäiset pankkiautomaatin näkymät, ja annetaan niille indeksit
+    ui->stackedWidget->insertWidget(2, &userMenu);
+    ui->stackedWidget->insertWidget(3, &cashWithdrawal);
+    ui->stackedWidget->insertWidget(4, &balance);
+
+    QPixmap bkgnd("../img/background.png"); // These 5 lines sets background image to the window
+
     bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Window, bkgnd);
     this->setPalette(palette);
+
+    ui->infoLabel->setVisible(0); // Hides error message container at start
+    ui->idCardLine->setFocus(); // Sets focus to card number input field. Without this focus would be on pin code input.
+
+    this->statusBar()->setSizeGripEnabled(false); // Hides resizing icon from bottom right corner
+    this->setFixedSize(QSize(800, 600)); // Prevents resizing window
 
 }
 
@@ -34,9 +51,9 @@ void MainWindow::loginClicked()
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
-
     loginManager = new QNetworkAccessManager(this);
-    connect(loginManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(loginSlot(QNetworkReply*)));
+    connect(loginManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(loginSlot(QNetworkReply*)));
+
 
     reply = loginManager->post(request, QJsonDocument(jsonObj).toJson());
 }
@@ -50,12 +67,16 @@ void MainWindow::loginSlot(QNetworkReply *reply)
 
     if(responseData.length()==0)
     {
+        ui->infoLabel->setVisible(1);
         ui->infoLabel->setText("Server not responding");
+        ui->stackedWidget->setCurrentIndex(1); // Poista rivin kommentointi jos tietokantaserveri ei ole vielä toiminnassa ja haluat testata koodia.
+
     }
     else
     {
         if(QString::compare(responseData, "-4078")==0)
         {
+            ui->infoLabel->setVisible(1);
             ui->infoLabel->setText("Error in database connection");
         }
         else
@@ -64,10 +85,22 @@ void MainWindow::loginSlot(QNetworkReply *reply)
             {
                 ui->idCardLine->clear();
                 ui->passwordLine->clear();
+                ui->infoLabel->setVisible(1);
+
                 ui->infoLabel->setText("Card number and PIN code don't match");
             }
             else
             {
+                ui->stackedWidget->setCurrentIndex(1);
+            }
+        }
+    }
+}
+
+void MainWindow::moveToIndex(int index)
+{
+    ui->stackedWidget->setCurrentIndex(index);
+}
                 //qDebug()<< "Test wasn't 0" << test;
                 studentWindow=new StudentWindow(idCard);
                 studentWindow->setWebToken(responseData);
