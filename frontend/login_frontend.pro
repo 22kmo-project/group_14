@@ -9,7 +9,9 @@ CONFIG += c++17
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-SOURCES += \
+SOURCES += \    
+    accounttransactions.cpp \
+    balance.cpp \
     cashwithdrawal.cpp \
     charity.cpp \
     chooseaccount.cpp \
@@ -19,6 +21,8 @@ SOURCES += \
     usermenu.cpp
 
 HEADERS += \
+    accounttransactions.h \
+    balance.h \
     cashwithdrawal.h \
     charity.h \
     chooseaccount.h \
@@ -27,6 +31,8 @@ HEADERS += \
     usermenu.h
 
 FORMS += \
+    accounttransactions.ui \
+    balance.ui \
     cashwithdrawal.ui \
     charity.ui \
     chooseaccount.ui \

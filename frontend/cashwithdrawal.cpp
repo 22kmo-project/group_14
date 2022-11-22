@@ -16,15 +16,12 @@ CashWithdrawal::~CashWithdrawal()
     delete ui;
 }
 
-
 void CashWithdrawal::on_button_back_clicked()
 {
     emit buttonClicked(4);
 }
 
-
 void CashWithdrawal::on_button_otheramount_clicked()
 {
 
 }
-
