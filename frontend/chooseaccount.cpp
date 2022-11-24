@@ -6,6 +6,8 @@ ChooseAccount::ChooseAccount(QWidget *parent) :
     ui(new Ui::ChooseAccount)
 {
     ui->setupUi(this);
+    connect(ui->debitButton, &QPushButton::clicked, this, &ChooseAccount::debitButton);
+    connect(ui->creditButton, &QPushButton::clicked, this, &ChooseAccount::creditButton);
 }
 
 ChooseAccount::~ChooseAccount()
@@ -13,8 +15,13 @@ ChooseAccount::~ChooseAccount()
     delete ui;
 }
 
-void ChooseAccount::on_pushButton_2_clicked()
+void ChooseAccount::debitButton()
 {
-    emit buttonClicked(2); // Moves stacked widget to index 2
+    emit changeWidget(2);
+}
+
+void ChooseAccount::creditButton()
+{
+    emit changeWidget(2);
 }
 

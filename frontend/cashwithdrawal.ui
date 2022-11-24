@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>540</y>
+     <y>530</y>
      <width>211</width>
      <height>51</height>
     </rect>
@@ -26,6 +26,9 @@
     <font>
      <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton {
@@ -51,7 +54,7 @@ font-size:18px;
    <property name="geometry">
     <rect>
      <x>550</x>
-     <y>540</y>
+     <y>530</y>
      <width>211</width>
      <height>51</height>
     </rect>
@@ -60,6 +63,9 @@ font-size:18px;
     <font>
      <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton {
@@ -86,7 +92,7 @@ font-size:18px;
    <property name="geometry">
     <rect>
      <x>290</x>
-     <y>450</y>
+     <y>440</y>
      <width>211</width>
      <height>51</height>
     </rect>
@@ -106,7 +112,7 @@ font-size:18px;</string>
    <property name="geometry">
     <rect>
      <x>130</x>
-     <y>170</y>
+     <y>160</y>
      <width>131</width>
      <height>81</height>
     </rect>
@@ -115,6 +121,9 @@ font-size:18px;</string>
     <font>
      <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton {
@@ -140,7 +149,7 @@ font-size:18px;
    <property name="geometry">
     <rect>
      <x>330</x>
-     <y>170</y>
+     <y>160</y>
      <width>131</width>
      <height>81</height>
     </rect>
@@ -149,6 +158,9 @@ font-size:18px;
     <font>
      <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton {
@@ -174,7 +186,7 @@ font-size:18px;
    <property name="geometry">
     <rect>
      <x>520</x>
-     <y>170</y>
+     <y>160</y>
      <width>131</width>
      <height>81</height>
     </rect>
@@ -183,6 +195,9 @@ font-size:18px;
     <font>
      <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton {
@@ -208,7 +223,7 @@ font-size:18px;
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>320</y>
+     <y>310</y>
      <width>131</width>
      <height>81</height>
     </rect>
@@ -217,6 +232,9 @@ font-size:18px;
     <font>
      <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton {
@@ -242,7 +260,7 @@ font-size:18px;
    <property name="geometry">
     <rect>
      <x>440</x>
-     <y>320</y>
+     <y>310</y>
      <width>131</width>
      <height>81</height>
     </rect>
@@ -251,6 +269,9 @@ font-size:18px;
     <font>
      <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton {
@@ -270,6 +291,23 @@ font-size:18px;
    </property>
    <property name="text">
     <string>Other amount</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>50</y>
+     <width>151</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size:18px;
+color:white;</string>
+   </property>
+   <property name="text">
+    <string>Choose amount</string>
    </property>
   </widget>
  </widget>

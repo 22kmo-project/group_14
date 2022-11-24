@@ -6,6 +6,8 @@ Balance::Balance(QWidget *parent) :
     ui(new Ui::Balance)
 {
     ui->setupUi(this);
+    connect(ui->cancelButton, &QPushButton::clicked, this, &Balance::cancelButton);
+
     ui->tableWidget->setColumnWidth(0,150);
     ui->tableWidget->setColumnWidth(1,100);
     ui->tableWidget->setColumnWidth(2,100);
@@ -29,8 +31,7 @@ Balance::~Balance()
     delete ui;
 }
 
-void Balance::on_pushButton_4_clicked()
+void Balance::cancelButton()
 {
-    emit buttonClicked(5);
+    emit changeWidget(2);
 }
-

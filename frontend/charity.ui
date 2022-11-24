@@ -27,6 +27,9 @@
      <pointsize>-1</pointsize>
     </font>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
     <string notr="true">background:white;
 border-radius:5px;
@@ -52,6 +55,9 @@ font-size:18px;</string>
      <pointsize>-1</pointsize>
     </font>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
     <string notr="true">background:white;
 border-radius:5px;
@@ -76,6 +82,9 @@ font-size:18px;</string>
     <font>
      <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">background:white;
@@ -166,6 +175,9 @@ font-size:18px;</string>
      <pointsize>-1</pointsize>
     </font>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
     <string notr="true">background:grey;
 border-radius:5px;
@@ -190,6 +202,9 @@ font-size:18px;</string>
     <font>
      <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(0, 85, 255);

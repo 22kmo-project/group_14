@@ -24,9 +24,10 @@ private:
     void *date;
 
 signals:
-    void buttonClicked(int);
+    void changeWidget(int);
+
 private slots:
-    void on_pushButton_4_clicked();
+    void cancelButton();
 };
 
 #endif // BALANCE_H

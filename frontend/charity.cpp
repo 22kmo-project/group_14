@@ -6,6 +6,8 @@ charity::charity(QWidget *parent) :
     ui(new Ui::charity)
 {
     ui->setupUi(this);
+    connect(ui->button_confirm, &QPushButton::clicked, this, &charity::button_confirm);
+    connect(ui->button_cancel, &QPushButton::clicked, this, &charity::button_cancel);
 }
 
 charity::~charity()
@@ -13,14 +15,14 @@ charity::~charity()
     delete ui;
 }
 
-void charity::on_button_confirm_clicked()
+void charity::button_confirm()
 {
-    emit buttonClicked(0);
+    emit changeWidget(5);
 }
 
 
-void charity::on_button_cancel_clicked()
+void charity::button_cancel()
 {
-    emit buttonClicked(3);
+    emit changeWidget(2);
 }
 

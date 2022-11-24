@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include "charity.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -9,21 +8,21 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     connect(ui->loginButton, &QPushButton::clicked, this, &MainWindow::loginClicked);
 
-    connect(&chooseAccount, SIGNAL(buttonClicked(int)), this, SLOT(moveToIndex(int)));
-    connect(&userMenu, SIGNAL(buttonClicked(int)), this, SLOT(moveToIndex(int)));
-    connect(&cashWithdrawal, SIGNAL(buttonClicked(int)), this, SLOT(moveToIndex(int)));
-    
-    connect(&charity, SIGNAL(buttonClicked(int)), this, SLOT(moveToIndex(int)));
-    connect(&balance, SIGNAL(buttonClicked(int)), this, SLOT(moveToIndex(int)));
+    connect(&chooseAccount, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
+    connect(&userMenu, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
+    connect(&cashWithdrawal, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
+    connect(&charity, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
+    connect(&balance, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
+    connect(&accountTransaction, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
 
     ui->stackedWidget->insertWidget(1, &chooseAccount); // Lisätään tehdyt widgetit, eli yksittäiset pankkiautomaatin näkymät, ja annetaan niille indeksit
     ui->stackedWidget->insertWidget(2, &userMenu);
     ui->stackedWidget->insertWidget(3, &cashWithdrawal);
     ui->stackedWidget->insertWidget(4, &charity);
     ui->stackedWidget->insertWidget(5, &balance);
+    ui->stackedWidget->insertWidget(6, &accountTransaction);
 
     QPixmap bkgnd("../img/background.png"); // These 5 lines sets background image to the window
-
     bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Window, bkgnd);
@@ -71,7 +70,7 @@ void MainWindow::loginSlot(QNetworkReply *reply)
     {
         ui->infoLabel->setVisible(1);
         ui->infoLabel->setText("Server not responding");
-        ui->stackedWidget->setCurrentIndex(1); // Poista rivin kommentointi jos tietokantaserveri ei ole vielä toiminnassa ja haluat testata koodia.
+        ui->stackedWidget->setCurrentIndex(1); // Poista rivin kommentointi jos haluat testata koodia ilman tietokantayhteyttä.
     }
     else
     {
@@ -91,7 +90,7 @@ void MainWindow::loginSlot(QNetworkReply *reply)
             }
             else
             {
-                ui->stackedWidget->setCurrentIndex(1);
+                moveToIndex(1);
             }
         }
     }

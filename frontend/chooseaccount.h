@@ -19,10 +19,11 @@ private:
     Ui::ChooseAccount *ui;
 
 signals:
-    void buttonClicked(int);
+    void changeWidget(int);
 
 private slots:
-    void on_pushButton_2_clicked();
+    void debitButton();
+    void creditButton();
 };
 
 #endif // CHOOSEACCOUNT_H

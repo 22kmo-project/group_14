@@ -10,8 +10,11 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>BankSimul (group14)</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -20,8 +23,8 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>-20</y>
+      <x>0</x>
+      <y>0</y>
       <width>801</width>
       <height>601</height>
      </rect>
@@ -66,9 +69,9 @@
       <property name="geometry">
        <rect>
         <x>210</x>
-        <y>520</y>
+        <y>500</y>
         <width>381</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="minimumSize">
@@ -145,6 +148,9 @@ font-size:18px;</string>
         <width>221</width>
         <height>51</height>
        </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">background:white;
