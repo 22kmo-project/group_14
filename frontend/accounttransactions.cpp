@@ -26,3 +26,27 @@ accountTransactions::~accountTransactions()
 {
     delete ui;
 }
+
+void accountTransactions::on_pushButton_5_clicked()
+{
+    emit buttonClicked(3);
+}
+
+
+void accountTransactions::on_pushButton_6_clicked()
+{
+
+}
+
+
+void accountTransactions::on_pushButton_7_clicked()
+{
+
+}
+
+
+void accountTransactions::on_pushButton_10_clicked()
+{
+    emit buttonClicked(3);
+}
+
