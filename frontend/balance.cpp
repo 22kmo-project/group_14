@@ -31,6 +31,6 @@ Balance::~Balance()
 
 void Balance::on_pushButton_4_clicked()
 {
-    emit buttonClicked(3);
+    emit buttonClicked(5);
 }
 
