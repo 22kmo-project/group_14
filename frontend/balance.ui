@@ -34,7 +34,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="cancelButton">
    <property name="geometry">
     <rect>
      <x>590</x>
@@ -42,6 +42,9 @@
      <width>141</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="text">
     <string>Cancel</string>

@@ -16,15 +16,14 @@ public:
     ~charity();
 
 private slots:
-    void on_button_confirm_clicked();
-
-    void on_button_cancel_clicked();
+    void button_confirm();
+    void button_cancel();
 
 private:
     Ui::charity *ui;
 
 signals:
-    void buttonClicked(int);
+    void changeWidget(int);
 };
 
 #endif // CHARITY_H

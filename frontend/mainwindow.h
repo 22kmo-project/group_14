@@ -7,13 +7,12 @@
 #include <QtNetwork>
 #include <QJsonObject>
 #include "databaseurl.h"
-
 #include <usermenu.h>
 #include <chooseaccount.h>
 #include <cashwithdrawal.h>
 #include <charity.h>
-
 #include <balance.h>
+#include <accounttransactions.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -47,5 +46,6 @@ private:
     CashWithdrawal cashWithdrawal;
     charity charity;
     Balance balance;
+    accountTransactions accountTransaction;
 };
 #endif // MAINWINDOW_H

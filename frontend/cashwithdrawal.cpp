@@ -7,6 +7,8 @@ CashWithdrawal::CashWithdrawal(QWidget *parent) :
     ui(new Ui::CashWithdrawal)
 {
     ui->setupUi(this);
+    connect(ui->button_confirm, &QPushButton::clicked, this, &CashWithdrawal::button_confirm);
+    connect(ui->button_back, &QPushButton::clicked, this, &CashWithdrawal::button_back);
 }
 
 CashWithdrawal::~CashWithdrawal()
@@ -14,52 +16,42 @@ CashWithdrawal::~CashWithdrawal()
     delete ui;
 }
 
-
-void CashWithdrawal::on_button_back_clicked()
+void CashWithdrawal::button_back()
 {
-    emit buttonClicked(4);
+    emit changeWidget(2);
 }
-
 
 void CashWithdrawal::on_lineEdit_amount_selectionChanged()
 {
     ui->lineEdit_amount->setDisabled(true);
 }
 
-
-void CashWithdrawal::on_button_otheramount_clicked()
+void CashWithdrawal::button_otheramount()
 {
     ui->lineEdit_amount->setEnabled(true);
 }
 
-
-
-void CashWithdrawal::on_button_confirm_clicked()
+void CashWithdrawal::button_confirm()
 {
-    emit buttonClicked(0);
+    emit changeWidget(4);
 }
 
-
-void CashWithdrawal::on_button_20_clicked()
+void CashWithdrawal::button_20()
 {
 
 }
 
-
-void CashWithdrawal::on_button_40_clicked()
+void CashWithdrawal::button_40()
 {
 
 }
 
-
-void CashWithdrawal::on_button_50_clicked()
+void CashWithdrawal::button_50()
 {
 
 }
 
-
-void CashWithdrawal::on_button_100_clicked()
+void CashWithdrawal::button_100()
 {
 
 }
-

@@ -6,6 +6,8 @@ accountTransactions::accountTransactions(QWidget *parent) :
     ui(new Ui::accountTransactions)
 {
     ui->setupUi(this);
+    connect(ui->cancelButton, &QPushButton::clicked, this, &accountTransactions::cancelButton);
+
     ui->tableWidget->setColumnWidth(0,150);
     ui->tableWidget->setColumnWidth(1,100);
     ui->tableWidget->setColumnWidth(2,100);
@@ -27,26 +29,17 @@ accountTransactions::~accountTransactions()
     delete ui;
 }
 
-void accountTransactions::on_pushButton_5_clicked()
-{
-    emit buttonClicked(3);
-}
-
-
-void accountTransactions::on_pushButton_6_clicked()
+void accountTransactions::nextpageButton()
 {
 
 }
 
-
-void accountTransactions::on_pushButton_7_clicked()
+void accountTransactions::previouspageButton()
 {
 
 }
 
-
-void accountTransactions::on_pushButton_10_clicked()
+void accountTransactions::cancelButton()
 {
-    emit buttonClicked(3);
+    emit changeWidget(2);
 }
-

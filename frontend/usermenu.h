@@ -16,13 +16,17 @@ public:
     ~UserMenu();
 
 private slots:
-    void on_pushButton_3_clicked();
+    void button_logout();
+    void button_balance();
+    void button_transactions();
+    void button_donation();
+    void button_cash();
 
 private:
     Ui::UserMenu *ui;
 
 signals:
-    void buttonClicked(int);
+    void changeWidget(int);
 };
 
 #endif // USERMENU_H
