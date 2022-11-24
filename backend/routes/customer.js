@@ -2,28 +2,26 @@ const express = require('express');
 const router = express.Router();
 const customer = require('../models/customer_model');
 
-router.get('/',
-    function (request, response) {
-        customer.getAll(function (err, dbResult) {
-            if (err) {
-                response.json(err);
-            } else {
-                console.log(dbResult.rows);
-                response.json(dbResult.rows);
-            }
-        })
-    });
-
 router.get('/:id?',
-    function (request, response) {
-        customer.getById(request.params.id, function (err, dbResult) {
-            if (err) {
-                response.json(err);
-            } else {
-                response.json(dbResult.rows);
-            }
-        })
+ function(request, response) {
+  if (request.params.id) {
+    customer.getById(request.params.id, function(err, dbResult) {
+      if (err) {
+        response.json(err);
+      } else {
+        response.json(dbResult[0]);
+      }
     });
+  } else {
+    customer.getAll(function(err, dbResult) {
+      if (err) {
+        response.json(err);
+      } else {
+        response.json(dbResult);
+      }
+    });
+  }
+});
 
 
 router.post('/', 
