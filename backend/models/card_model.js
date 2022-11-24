@@ -31,7 +31,15 @@ const card = {
     },
     checkPassword: function(id_card, callback){
         return db.query('select pin from Card where id_card=?',[id_card],callback);
+    },
+	attachAccount: function(add_data, callback) {
+		return db.query(
+			'insert into Account_Card (id_account, id_card) values (?,?)',
+			[add_data.id_account, add_data.id_card],
+			callback);
+    },
+    accountCardById: function (id, callback) {
+        return db.query('select * from Account_Card where id_account=?', [id], callback);
     }
-    
 };
 module.exports = card;
