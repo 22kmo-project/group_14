@@ -13,23 +13,6 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>360</x>
-     <y>90</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font-size:20px;
-color:white;</string>
-   </property>
-   <property name="text">
-    <string>Page 4</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="button_back">
    <property name="geometry">
     <rect>
@@ -45,17 +28,26 @@ color:white;</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background:grey;
+    <string notr="true">QPushButton {
+background-color: rgb(80, 80, 80);
+color: rgb(255, 255, 255);
 border-radius:5px;
-padding:0 10px;
-color:white;
-font-size:18px;</string>
+padding:5 5px;
+font-size:18px;
+}
+QPushButton:hover {
+background-color: rgb(95, 95, 95);
+color: rgb(255, 255, 255);
+border-radius:8px;
+padding:5 5px;
+font-size:18px;
+}</string>
    </property>
    <property name="text">
     <string>Back</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="button_cofirm">
+  <widget class="QPushButton" name="button_confirm">
    <property name="geometry">
     <rect>
      <x>550</x>
@@ -70,11 +62,21 @@ font-size:18px;</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 85, 255);
+    <string notr="true">QPushButton {
+background-color: rgb(0, 85, 255);
+color: rgb(255, 255, 255);
 border-radius:5px;
-padding:0 10px;
-color:white;
-font-size:18px;</string>
+padding:5 5px;
+font-size:18px;
+}
+QPushButton:hover {
+background-color: rgb(5, 95, 255);
+color: rgb(245, 245, 245);
+border-radius:8px;
+padding:5 5px;
+font-size:18px;
+}
+</string>
    </property>
    <property name="text">
     <string>Confirm</string>
@@ -96,6 +98,9 @@ padding:0 10px;
 color:black;
 font-size:18px;</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
   <widget class="QPushButton" name="button_20">
    <property name="geometry">
@@ -112,11 +117,20 @@ font-size:18px;</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background:white;
+    <string notr="true">QPushButton {
+background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
 border-radius:5px;
-padding:0 10px;
-color:black;
-font-size:18px;</string>
+padding:5 5px;
+font-size:18px;
+}
+QPushButton:hover {
+background-color: rgb(245, 245, 245);
+color: rgb(10, 10, 10);
+border-radius:8px;
+padding:5 5px;
+font-size:18px;
+}</string>
    </property>
    <property name="text">
     <string>20€</string>
@@ -137,11 +151,20 @@ font-size:18px;</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background:white;
+    <string notr="true">QPushButton {
+background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
 border-radius:5px;
-padding:0 10px;
-color:black;
-font-size:18px;</string>
+padding:5 5px;
+font-size:18px;
+}
+QPushButton:hover {
+background-color: rgb(245, 245, 245);
+color: rgb(10, 10, 10);
+border-radius:8px;
+padding:5 5px;
+font-size:18px;
+}</string>
    </property>
    <property name="text">
     <string>40€</string>
@@ -162,11 +185,20 @@ font-size:18px;</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background:white;
+    <string notr="true">QPushButton {
+background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
 border-radius:5px;
-padding:0 10px;
-color:black;
-font-size:18px;</string>
+padding:5 5px;
+font-size:18px;
+}
+QPushButton:hover {
+background-color: rgb(245, 245, 245);
+color: rgb(10, 10, 10);
+border-radius:8px;
+padding:5 5px;
+font-size:18px;
+}</string>
    </property>
    <property name="text">
     <string>50€</string>
@@ -187,11 +219,20 @@ font-size:18px;</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background:white;
+    <string notr="true">QPushButton {
+background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
 border-radius:5px;
-padding:0 10px;
-color:black;
-font-size:18px;</string>
+padding:5 5px;
+font-size:18px;
+}
+QPushButton:hover {
+background-color: rgb(245, 245, 245);
+color: rgb(10, 10, 10);
+border-radius:8px;
+padding:5 5px;
+font-size:18px;
+}</string>
    </property>
    <property name="text">
     <string>100€</string>
@@ -212,11 +253,20 @@ font-size:18px;</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background:white;
+    <string notr="true">QPushButton {
+background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
 border-radius:5px;
-padding:0 10px;
-color:black;
-font-size:18px;</string>
+padding:5 5px;
+font-size:18px;
+}
+QPushButton:hover {
+background-color: rgb(245, 245, 245);
+color: rgb(10, 10, 10);
+border-radius:8px;
+padding:5 5px;
+font-size:18px;
+}</string>
    </property>
    <property name="text">
     <string>Other amount</string>
