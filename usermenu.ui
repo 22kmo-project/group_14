@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>UserMenu</class>
+ <widget class="QWidget" name="UserMenu">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QPushButton" name="button_cash">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>250</y>
+     <width>121</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
+border-radius:5px;
+padding:5 5px;
+font-size:18px;
+}
+QPushButton:hover {
+background-color: rgb(245, 245, 245);
+color: rgb(10, 10, 10);
+border-radius:8px;
+padding:5 5px;
+font-size:18px;
+}</string>
+   </property>
+   <property name="text">
+    <string>Cash</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_transactions">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>420</y>
+     <width>121</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
+border-radius:5px;
+padding:5 5px;
+font-size:18px;
+}
+QPushButton:hover {
+background-color: rgb(245, 245, 245);
+color: rgb(10, 10, 10);
+border-radius:8px;
+padding:5 5px;
+font-size:18px;
+}</string>
+   </property>
+   <property name="text">
+    <string>Transactions</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_donation">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>420</y>
+     <width>121</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
+border-radius:5px;
+padding:5 5px;
+font-size:18px;
+}
+QPushButton:hover {
+background-color: rgb(245, 245, 245);
+color: rgb(10, 10, 10);
+border-radius:8px;
+padding:5 5px;
+font-size:18px;
+}</string>
+   </property>
+   <property name="text">
+    <string>Donation</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_logout">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>100</y>
+     <width>101</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
+border-radius:5px;
+padding:5 5px;
+font-size:18px;
+}
+QPushButton:hover {
+background-color: rgb(245, 245, 245);
+color: rgb(10, 10, 10);
+border-radius:8px;
+padding:5 5px;
+font-size:18px;
+}</string>
+   </property>
+   <property name="text">
+    <string>Log out</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="button_balance">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>250</y>
+     <width>121</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
+border-radius:5px;
+padding:5 5px;
+font-size:18px;
+}
+QPushButton:hover {
+background-color: rgb(245, 245, 245);
+color: rgb(10, 10, 10);
+border-radius:8px;
+padding:5 5px;
+font-size:18px;
+}</string>
+   </property>
+   <property name="text">
+    <string>Balance</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
