@@ -1,7 +1,9 @@
 const db = require('../database');
 
-
 const account = {
+    cashWithdraw: function (data, callback) {
+        return db.query('CALL cash_withdraw(?,?)', [data.id, data.amount], callback);
+    },
     getById: function (id, callback) {
         return db.query('select * from Account where id_account=?', [id], callback);
     },
@@ -22,6 +24,6 @@ const account = {
                 'update Account set balance=?, id_customer=?, credit_limit=? where id_account=?',
                 [update_data.balance, update_data.id_customer, update_data.credit_limit, id],
                 callback);
-    }    
+    }
 };
 module.exports = account;

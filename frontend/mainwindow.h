@@ -3,7 +3,6 @@
 
 #include "qpushbutton.h"
 #include <QMainWindow>
-#include "studentwindow.h"
 #include <QtNetwork>
 #include <QJsonObject>
 #include "databaseurl.h"
@@ -34,8 +33,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QPushButton* loginButton;
-
-    StudentWindow *studentWindow;
     QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
     QByteArray responseData;
