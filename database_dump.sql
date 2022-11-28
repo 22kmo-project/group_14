@@ -152,6 +152,24 @@ LOCK TABLES `transactions` WRITE;
 /*!40000 ALTER TABLE `transactions` ENABLE KEYS */;
 UNLOCK TABLES;
 
+
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `cash_withdraw`(IN id INT, IN amount DOUBLE)
+BEGIN
+  DECLARE t, c_limit INT DEFAULT 0;
+  START TRANSACTION;
+  SET c_limit = (SELECT credit_limit FROM account WHERE id_account = id);
+  UPDATE account SET balance = balance-amount WHERE id_account=id AND balance+c_limit-amount >= 0;
+  SET t = ROW_COUNT();
+    IF (t > 0) THEN
+      COMMIT;
+      INSERT INTO transactions(id_account, event, amount, date) VALUES(id, 'withdrawal', amount, NOW());
+    ELSE
+      ROLLBACK;
+  END IF;
+  END ;;
+DELIMITER ;
+
 --
 -- Dumping routines for database 'bank'
 --
