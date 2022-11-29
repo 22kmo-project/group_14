@@ -83,6 +83,57 @@
      <height>341</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QTableWidget {
+color: #546E7A;
+gridline-color: #ECEFF1;
+border-color: red;
+font: 18px;
+background-color:#FAFAFA;
+alternate-background-color:#F5F5F5;
+font-weight:bold;
+border:1px solid white;
+}
+QHeaderView::section {
+background-color: #fff;
+color: #546E7A;
+height: 35px;
+font: 18px;
+text-align:center;
+}
+QHeaderView::item {
+background-color: blue;
+color: white;
+height: 35px;
+font: 15px;
+text-align:center;
+}
+QTableView::item:focus{
+border: 2px solid rgb(242, 128, 133);
+background-color: red;
+}</string>
+   </property>
+   <attribute name="horizontalHeaderVisible">
+    <bool>true</bool>
+   </attribute>
+   <attribute name="horizontalHeaderHighlightSections">
+    <bool>true</bool>
+   </attribute>
+   <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+    <bool>true</bool>
+   </attribute>
+   <attribute name="horizontalHeaderStretchLastSection">
+    <bool>false</bool>
+   </attribute>
+   <attribute name="verticalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
+   <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+    <bool>false</bool>
+   </attribute>
+   <attribute name="verticalHeaderStretchLastSection">
+    <bool>false</bool>
+   </attribute>
    <row>
     <property name="text">
      <string/>

@@ -77,4 +77,21 @@ function(request, response) {
   });
 });
 
+router.post('/donation', 
+function(request, response) {
+  account.donation(request.body, function(err, dbResult) {
+    if (err) {
+      response.json(err);
+    } else {
+      if (dbResult["affectedRows"] > 0) { // affectedRows = 1 if donation was successful
+        console.log("Success!");
+        response.send(true);
+      } else {
+        console.log("Insufficient funds!");
+        response.send(false);
+      }
+    }
+  });
+});
+
 module.exports = router;
