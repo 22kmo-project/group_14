@@ -7,13 +7,15 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     connect(ui->loginButton, &QPushButton::clicked, this, &MainWindow::loginClicked);
-
     connect(&chooseAccount, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
     connect(&userMenu, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
     connect(&cashWithdrawal, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
     connect(&charity, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
     connect(&balance, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
     connect(&accountTransaction, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
+    connect(&deposit, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
+
+    //connect(&chooseAccount, SIGNAL(chooseAccountType(int)), &userMenu, SLOT(getAccountType(int)));
 
     ui->stackedWidget->insertWidget(1, &chooseAccount); // Lisätään tehdyt widgetit, eli yksittäiset pankkiautomaatin näkymät, ja annetaan niille indeksit
     ui->stackedWidget->insertWidget(2, &userMenu);
@@ -21,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->stackedWidget->insertWidget(4, &charity);
     ui->stackedWidget->insertWidget(5, &balance);
     ui->stackedWidget->insertWidget(6, &accountTransaction);
+    ui->stackedWidget->insertWidget(7, &deposit);
 
     QPixmap bkgnd("../img/background.png"); // These 5 lines sets background image to the window
     bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
@@ -90,10 +93,47 @@ void MainWindow::loginSlot(QNetworkReply *reply)
             }
             else
             {
-                moveToIndex(1);
+                // LOGGING IN -->
+
+                reply->deleteLater();
+                loginManager->deleteLater();
+
+                QString cardId = "123456";
+                QString site_url=DatabaseURL::getBaseURL()+"/card/info/"+cardId;
+                QNetworkRequest request((site_url));
+                //WEBTOKEN ALKU
+                //request.setRawHeader(QByteArray("Authorization"),(webToken));
+                //WEBTOKEN LOPPU
+                testManager = new QNetworkAccessManager(this);
+                connect(testManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(testSlot(QNetworkReply*)));
+                reply = testManager->get(request);
             }
         }
     }
+}
+
+void MainWindow::testSlot(QNetworkReply *reply)
+{
+    QByteArray response_data=reply->readAll();
+    QJsonDocument jsonResponse = QJsonDocument::fromJson(response_data);
+
+    int numberOfAccounts = jsonResponse[0]["numberOfAccounts"].toInt();
+
+    qDebug() << "Number of accounts: " << numberOfAccounts;
+
+    if (numberOfAccounts == 1)
+    {
+        objectChooseAccount = new ChooseAccount(nullptr, 99);
+        moveToIndex(1);
+        //moveToIndex(2); // Lopullisessa versiossa siirrytään oikeasti tähän indeksiin tässä kohtaa
+    }
+    else
+    {
+        moveToIndex(1);
+    }
+
+    reply->deleteLater();
+    testManager->deleteLater();
 }
 
 void MainWindow::moveToIndex(int index)

@@ -1,16 +1,19 @@
 #include "usermenu.h"
 #include "ui_usermenu.h"
+#include <QDebug>
 
 UserMenu::UserMenu(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::UserMenu)
 {
     ui->setupUi(this);
+    qDebug() << "UserMenu created!! Testing 2: ";
     connect(ui->button_cash, &QPushButton::clicked, this, &UserMenu::button_cash);
     connect(ui->button_donation, &QPushButton::clicked, this, &UserMenu::button_donation);
     connect(ui->button_balance, &QPushButton::clicked, this, &UserMenu::button_balance);
     connect(ui->button_transactions, &QPushButton::clicked, this, &UserMenu::button_transactions);
     connect(ui->button_logout, &QPushButton::clicked, this, &UserMenu::button_logout);
+    connect(ui->button_deposit, &QPushButton::clicked, this, &UserMenu::button_deposit);
 }
 
 UserMenu::~UserMenu()
@@ -42,3 +45,16 @@ void UserMenu::button_cash()
 {
     emit changeWidget(3);
 }
+
+void UserMenu::button_deposit()
+{
+    emit changeWidget(7);
+}
+
+void UserMenu::getAccountType(int type)
+{
+    accountType = type;
+    qDebug() << "TESTING";
+    qDebug() << "Account type: " << accountType;
+}
+

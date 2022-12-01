@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>110</x>
-     <y>230</y>
+     <y>200</y>
      <width>141</width>
      <height>81</height>
     </rect>
@@ -31,21 +31,24 @@
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true">background:white;
-border-radius:5px;
-padding:0 10px;
+    <string notr="true">background-color:white;
+background-image: url(../img/logo_charity1.png);
+background-repeat:no-repeat;
+background-position: center center;
+border-radius:20px;
 color:black;
-font-size:18px;</string>
+font-size:18px;
+border:5px solid #FF7043;</string>
    </property>
    <property name="text">
-    <string>Kohde X</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="button_kohde2">
    <property name="geometry">
     <rect>
      <x>340</x>
-     <y>230</y>
+     <y>200</y>
      <width>141</width>
      <height>81</height>
     </rect>
@@ -59,21 +62,23 @@ font-size:18px;</string>
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true">background:white;
-border-radius:5px;
-padding:0 10px;
+    <string notr="true">background-color:white;
+background-image: url(../img/logo_charity1.png);
+background-repeat:no-repeat;
+background-position: center center;
+border-radius:20px;
 color:black;
 font-size:18px;</string>
    </property>
    <property name="text">
-    <string>Kohde X</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="button_kohde3">
    <property name="geometry">
     <rect>
      <x>570</x>
-     <y>230</y>
+     <y>200</y>
      <width>141</width>
      <height>81</height>
     </rect>
@@ -87,32 +92,35 @@ font-size:18px;</string>
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true">background:white;
-border-radius:5px;
-padding:0 10px;
+    <string notr="true">background-color:white;
+background-image: url(../img/logo_charity1.png);
+background-repeat:no-repeat;
+background-position: center center;
+border-radius:20px;
 color:black;
 font-size:18px;</string>
    </property>
    <property name="text">
-    <string>Kohde X</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_toptext">
    <property name="geometry">
     <rect>
      <x>320</x>
-     <y>110</y>
-     <width>181</width>
+     <y>80</y>
+     <width>291</width>
      <height>81</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>20</pointsize>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);</string>
+    <string notr="true">color: rgb(255, 255, 255);
+font-size:28px;</string>
    </property>
    <property name="text">
     <string>Choose charity</string>
@@ -122,7 +130,7 @@ font-size:18px;</string>
    <property name="geometry">
     <rect>
      <x>310</x>
-     <y>350</y>
+     <y>360</y>
      <width>191</width>
      <height>41</height>
     </rect>
@@ -143,7 +151,7 @@ font-size:18px;</string>
    <property name="geometry">
     <rect>
      <x>270</x>
-     <y>410</y>
+     <y>420</y>
      <width>261</width>
      <height>51</height>
     </rect>
@@ -165,7 +173,7 @@ font-size:18px;</string>
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>530</y>
+     <y>520</y>
      <width>181</width>
      <height>51</height>
     </rect>
@@ -179,21 +187,30 @@ font-size:18px;</string>
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true">background:grey;
-border-radius:5px;
-padding:0 10px;
-color:white;
-font-size:18px;</string>
+    <string notr="true">QPushButton {
+background-color: rgb(130, 130, 130);
+background-image: url(../img/icon_back.png);
+background-repeat:no-repeat;
+background-position:left middle;
+color: rgb(255, 255, 255);
+border-radius:15px;
+padding:5 5px;
+font-size:20px;
+}
+QPushButton:hover {
+background-color: rgb(120, 120, 120);
+color: rgb(255, 255, 255);
+}</string>
    </property>
    <property name="text">
-    <string>Cancel</string>
+    <string>Back</string>
    </property>
   </widget>
   <widget class="QPushButton" name="button_confirm">
    <property name="geometry">
     <rect>
      <x>580</x>
-     <y>530</y>
+     <y>520</y>
      <width>181</width>
      <height>51</height>
     </rect>
@@ -207,14 +224,90 @@ font-size:18px;</string>
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 85, 255);
-border-radius:5px;
-padding:0 10px;
-color:white;
-font-size:18px;</string>
+    <string notr="true">QPushButton {
+background-color: #4CAF50;
+background-image: url(../img/icon_confirm.png);
+background-repeat: no-repeat;
+background-position: right middle;
+color: rgb(255, 255, 255);
+border-radius: 15px;
+padding:5 5px;
+font-size:20px;
+}
+QPushButton:hover {
+background-color: #43A047;
+color: rgb(245, 245, 245);
+}
+</string>
    </property>
    <property name="text">
-    <string>Confirm donation</string>
+    <string>Confirm</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_toptext_2">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>280</y>
+     <width>71</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white;
+font-size:20px;</string>
+   </property>
+   <property name="text">
+    <string>WWF</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_toptext_3">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>280</y>
+     <width>71</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white;
+font-size:20px;</string>
+   </property>
+   <property name="text">
+    <string>WWF</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_toptext_4">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>280</y>
+     <width>71</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white;
+font-size:20px;</string>
+   </property>
+   <property name="text">
+    <string>WWF</string>
    </property>
   </widget>
  </widget>

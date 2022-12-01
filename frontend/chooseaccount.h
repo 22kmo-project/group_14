@@ -12,7 +12,7 @@ class ChooseAccount : public QWidget
     Q_OBJECT
 
 public:
-    explicit ChooseAccount(QWidget *parent = nullptr);
+    explicit ChooseAccount(QWidget *parent = nullptr, int type = 2);
     ~ChooseAccount();
 
 private:
@@ -20,6 +20,7 @@ private:
 
 signals:
     void changeWidget(int);
+    void chooseAccountType(int);
 
 private slots:
     void debitButton();

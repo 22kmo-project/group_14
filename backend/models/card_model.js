@@ -4,6 +4,9 @@ const bcrypt = require('bcryptjs');
 const saltRounds = 10;
 
 const card = {
+    getNumberOfAccounts: function (id, callback) {
+        return db.query('SELECT (SELECT COUNT(*) FROM account_card WHERE id_card=?) AS number_of_accounts', [id], callback); // Returns the number of accounts associated with the card, 1 = only debit account, 2 = debit and credit account.
+    },
     getById: function (id, callback) {
         return db.query('select * from Card where id_card=?', [id], callback);
     },
