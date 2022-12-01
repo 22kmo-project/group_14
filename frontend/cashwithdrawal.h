@@ -5,7 +5,6 @@
 #include <QPushButton>
 #include <QMainWindow>
 #include <QString>
-#include <QLineEdit>
 #include <QtNetwork>
 #include <QJsonObject>
 #include "databaseurl.h"
@@ -33,7 +32,6 @@ private slots:
     void withdraw();
     void button_back();
     void button_otheramount();
-    void on_lineEdit_amount_selectionChanged();
     void button_20();
     void button_40();
     void button_50();

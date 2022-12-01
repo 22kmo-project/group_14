@@ -2,6 +2,20 @@ const express = require('express');
 const router = express.Router();
 const card = require('../models/card_model');
 
+
+router.get('/info/:id',
+ function(request, response) {
+  if (request.params.id) {
+    card.getNumberOfAccounts(request.params.id, function(err, dbResult) {
+      if (err) {
+        response.json(err);
+      } else {
+        response.json(dbResult);
+      }
+    });
+  }
+});
+
 router.get('/:id?',
  function(request, response) {
   if (request.params.id) {

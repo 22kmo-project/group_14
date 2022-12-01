@@ -1,6 +1,10 @@
 const db = require('../database');
 
 const account = {
+
+    deposit: function (data, callback) {
+        return db.query('CALL deposit(?,?)', [data.id, data.amount], callback);
+    },
     cashWithdraw: function (data, callback) {
         return db.query('CALL cash_withdraw(?,?)', [data.id, data.amount], callback);
     },
@@ -24,13 +28,6 @@ const account = {
                 'update Account set balance=?, id_customer=?, credit_limit=? where id_account=?',
                 [update_data.balance, update_data.id_customer, update_data.credit_limit, id],
                 callback);
-    },
-    donation: function (data, callback) {
-        return db.query('CALL donation(?,?)', [data.id, data.amount], callback);
     }
-
 };
-
-
-
 module.exports = account;
