@@ -7,8 +7,14 @@ CashWithdrawal::CashWithdrawal(QWidget *parent) :
     ui(new Ui::CashWithdrawal)
 {
     ui->setupUi(this);
+    ui->stackedWidget->setCurrentIndex(1);
     connect(ui->button_confirm, &QPushButton::clicked, this, &CashWithdrawal::withdraw);
     connect(ui->button_back, &QPushButton::clicked, this, &CashWithdrawal::button_back);
+    connect(ui->button_20, &QPushButton::clicked, this, &CashWithdrawal::button_20);
+    connect(ui->button_40, &QPushButton::clicked, this, &CashWithdrawal::button_40);
+    connect(ui->button_50, &QPushButton::clicked, this, &CashWithdrawal::button_50);
+    connect(ui->button_100, &QPushButton::clicked, this, &CashWithdrawal::button_100);
+    connect(ui->button_otheramount, &QPushButton::clicked, this, &CashWithdrawal::button_otheramount);
 }
 
 CashWithdrawal::~CashWithdrawal()
@@ -19,7 +25,7 @@ CashWithdrawal::~CashWithdrawal()
 void CashWithdrawal::withdraw()
 {
     QString id_account = "1"; // Tähän pitäisi saada tuotua valitun tilin id
-    QString amount = "500"; // Ja tähän valittu nostosumma
+    QString amount = QString::number(selectedAmount); // Ja tähän valittu nostosumma
 
     QJsonObject jsonObj;
     jsonObj.insert("id", id_account);
@@ -53,12 +59,14 @@ void CashWithdrawal::withdrawSlot(QNetworkReply *reply)
             if(test == 0)
             {
                 qDebug() << "Sorry. You have insufficient funds available.";
+                ui->stackedWidget->setCurrentIndex(2);
                 // Vaihdetaan sitten stacked widgettiä cashWithdrawalin sisällä sivulle joka
                 // näyttää virheilmoituksen sekä napin jolla voi palata näkymään jossa valitaan nostosumma
             }
             else
             {
                 qDebug() << "Your transaction is complete. Your remaining balance is X €. Please take your cash and receipt.";
+                ui->stackedWidget->setCurrentIndex(0);
                 // Vaihdetaan näkymään jossa eri viesti sekä nappula (tai vaikka 5s automaattinen siirto) päävalikkoon(?)
             }
         }
@@ -70,32 +78,45 @@ void CashWithdrawal::button_back()
     emit changeWidget(2);
 }
 
-void CashWithdrawal::on_lineEdit_amount_selectionChanged()
-{
-    ui->lineEdit_amount->setDisabled(true);
-}
-
 void CashWithdrawal::button_otheramount()
 {
-    ui->lineEdit_amount->setEnabled(true);
+    ui->stackedWidget->setCurrentIndex(3);
+}
+
+void CashWithdrawal::on_button_cancel2_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void CashWithdrawal::on_button_accept_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+    selectedAmount = (ui->lineEdit->text()).toInt();
 }
 
 void CashWithdrawal::button_20()
 {
-
+    selectedAmount = 20;
 }
 
 void CashWithdrawal::button_40()
 {
-
+    selectedAmount = 40;
 }
 
 void CashWithdrawal::button_50()
 {
-
+    selectedAmount = 50;
 }
 
 void CashWithdrawal::button_100()
 {
-
+    selectedAmount = 100;
 }
+
+
+void CashWithdrawal::on_button_back_2_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
