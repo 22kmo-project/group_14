@@ -23,12 +23,12 @@ void charity::donation()
 {
     QString id_account = "1"; // Tähän pitäisi saada tuotua valitun tilin id
     QString amount = QString::number(selectedAmount); // Ja tähän valittu nostosumma
-    QString Value = QString::number(selectedAmount);
+
 
     QJsonObject jsonObj;
     jsonObj.insert("id", id_account);
     jsonObj.insert("amount", amount);
-    jsonObj.insert("amount", Value);
+
 
     QString site_url=DatabaseURL::getBaseURL()+"/account/charity";
     QNetworkRequest request((site_url));
@@ -84,25 +84,17 @@ void charity::button_cancel()
 
 void charity::on_button_kohde1_clicked()
 {
-    this->lineEdit();
+    selectedAmount = (ui->lineEdit_chooseamount->text()).toInt();
 }
 
 
 void charity::on_button_kohde2_clicked()
 {
-    this->lineEdit();
+    selectedAmount = (ui->lineEdit_chooseamount->text()).toInt();
 }
 
 
 void charity::on_button_kohde3_clicked()
 {
-    this->lineEdit();
+    selectedAmount = (ui->lineEdit_chooseamount->text()).toInt();
 }
-
-
-void charity::lineEdit()
-{
-    selectedAmount = Value;
-
-}
-

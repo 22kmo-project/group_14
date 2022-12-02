@@ -28,7 +28,6 @@ private slots:
     void on_button_kohde1_clicked();
     void on_button_kohde2_clicked();
     void on_button_kohde3_clicked();
-    void lineEdit();
 
 private:
     Ui::charity *ui;
@@ -36,7 +35,6 @@ private:
        QNetworkReply *reply;
        QByteArray responseData;
        int selectedAmount;
-       int Value;
 
 signals:
     void changeWidget(int);
