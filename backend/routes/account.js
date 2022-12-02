@@ -3,18 +3,37 @@ const { getBalance } = require('../models/account_model');
 const router = express.Router();
 const account = require('../models/account_model');
 
+router.post('/deposit', 
+function(request, response) {
+  account.deposit(request.body, function(err, dbResult) {
+    if (err) {
+      response.json(err);
+    } else {
+      if (dbResult["affectedRows"] > 0) { // affectedRows = 1 if updating row was successful
+        console.log("Success!");
+        response.send(true);
+      } else {
+        console.log("Something went wrong!");
+        response.send(false);
+      }
+    }
+  });
+});
+
 router.post('/withdraw', 
 function(request, response) {
   account.cashWithdraw(request.body, function(err, dbResult) {
     if (err) {
       response.json(err);
     } else {
-      if (dbResult["affectedRows"] > 0) { // affectedRows = 1 if withdrawal was successful
-        console.log("Success!");
-        response.send(true);
+      if (dbResult[0][0]["success"] == 1) { // success returns 1 if account had enough balance and withdrawal was succesfull
+        console.log(dbResult[0]);
+        console.log("Success!\n");
+        response.json(dbResult[0]);
       } else {
-        console.log("Insufficient funds!");
-        response.send(false);
+        console.log(dbResult[0]);
+        console.log("Insufficient funds!\n");
+        response.json(dbResult[0]);
       }
     }
   });

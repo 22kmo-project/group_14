@@ -42,7 +42,11 @@ void CashWithdrawal::withdraw()
 void CashWithdrawal::withdrawSlot(QNetworkReply *reply)
 {
     responseData=reply->readAll();
-    int test = QString::compare(responseData, "false");
+    QJsonDocument jsonResponseData = QJsonDocument::fromJson(responseData);
+
+    bool success = jsonResponseData[0]["success"].toInt(); // success = 1 if transaction was made and 0 if it failed
+    double balance = jsonResponseData[0]["balance"].toDouble();
+    double creditLimit = jsonResponseData[0]["credit_limit"].toDouble();
 
     if(responseData.length() == 0)
     {
@@ -56,16 +60,16 @@ void CashWithdrawal::withdrawSlot(QNetworkReply *reply)
         }
         else
         {
-            if(test == 0)
+            if(success == 0)
             {
-                qDebug() << "Sorry. You have insufficient funds available.";
+                qDebug() << "Sorry. You have insufficient funds available. Your current balance:" << balance << "Your credit limit:" << creditLimit;
                 ui->stackedWidget->setCurrentIndex(2);
                 // Vaihdetaan sitten stacked widgettiä cashWithdrawalin sisällä sivulle joka
                 // näyttää virheilmoituksen sekä napin jolla voi palata näkymään jossa valitaan nostosumma
             }
             else
             {
-                qDebug() << "Your transaction is complete. Your remaining balance is X €. Please take your cash and receipt.";
+                qDebug() << "Your transaction is complete. Your remaining balance is" << balance << "€. Please take your cash and receipt. Your credit limit:" << creditLimit;
                 ui->stackedWidget->setCurrentIndex(0);
                 // Vaihdetaan näkymään jossa eri viesti sekä nappula (tai vaikka 5s automaattinen siirto) päävalikkoon(?)
             }

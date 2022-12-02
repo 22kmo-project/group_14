@@ -1,6 +1,9 @@
 const db = require('../database');
 
 const account = {
+    deposit: function (data, callback) {
+        return db.query('CALL deposit(?,?)', [data.id, data.amount], callback);
+    },
     cashWithdraw: function (data, callback) {
         return db.query('CALL cash_withdraw(?,?)', [data.id, data.amount], callback);
     },
