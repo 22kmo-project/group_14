@@ -215,8 +215,8 @@ background-color: rgb(235, 235, 235);
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>530</y>
-       <width>211</width>
+       <y>520</y>
+       <width>181</width>
        <height>51</height>
       </rect>
      </property>
@@ -284,9 +284,9 @@ background-color: rgb(235, 235, 235);
     <widget class="QPushButton" name="button_confirm">
      <property name="geometry">
       <rect>
-       <x>550</x>
-       <y>530</y>
-       <width>211</width>
+       <x>590</x>
+       <y>520</y>
+       <width>181</width>
        <height>51</height>
       </rect>
      </property>
@@ -436,9 +436,9 @@ border-radius: 25px;</string>
     <widget class="QPushButton" name="button_accept">
      <property name="geometry">
       <rect>
-       <x>550</x>
-       <y>500</y>
-       <width>161</width>
+       <x>590</x>
+       <y>520</y>
+       <width>181</width>
        <height>51</height>
       </rect>
      </property>
@@ -449,17 +449,20 @@ border-radius: 25px;</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
-background-color: rgb(130, 130, 130);
-background-position:left middle;
+background-color: #4CAF50;
+background-image: url(../img/icon_confirm.png);
+background-repeat: no-repeat;
+background-position: right middle;
 color: rgb(255, 255, 255);
-border-radius:15px;
+border-radius: 15px;
 padding:5 5px;
 font-size:20px;
 }
 QPushButton:hover {
-background-color: rgb(120, 120, 120);
-color: rgb(255, 255, 255);
-}</string>
+background-color: #43A047;
+color: rgb(245, 245, 245);
+}
+</string>
      </property>
      <property name="text">
       <string>Accept</string>
@@ -468,9 +471,9 @@ color: rgb(255, 255, 255);
     <widget class="QPushButton" name="button_back_2">
      <property name="geometry">
       <rect>
-       <x>110</x>
-       <y>500</y>
-       <width>161</width>
+       <x>30</x>
+       <y>520</y>
+       <width>181</width>
        <height>51</height>
       </rect>
      </property>
@@ -482,6 +485,8 @@ color: rgb(255, 255, 255);
      <property name="styleSheet">
       <string notr="true">QPushButton {
 background-color: rgb(130, 130, 130);
+background-image: url(../img/icon_back.png);
+background-repeat:no-repeat;
 background-position:left middle;
 color: rgb(255, 255, 255);
 border-radius:15px;

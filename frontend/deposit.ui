@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Deposit</class>
+ <widget class="QWidget" name="Deposit">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QStackedWidget" name="stackedWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>600</height>
+    </rect>
+   </property>
+   <widget class="QWidget" name="index">
+    <widget class="QPushButton" name="buttonBills">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>290</y>
+       <width>261</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+background-color: rgb(255, 255, 255);
+color: #616161;
+border-radius:20px;
+font-size:22px;
+border:3px solid #ECEFF1;
+}
+QPushButton:hover {
+background-color: #ECEFF1;
+color:#37474F;
+}</string>
+     </property>
+     <property name="text">
+      <string>Bills</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="buttonCoins">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>290</y>
+       <width>261</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+background-color: rgb(255, 255, 255);
+color: #616161;
+border-radius:20px;
+font-size:22px;
+border:3px solid #ECEFF1;
+}
+QPushButton:hover {
+background-color: #ECEFF1;
+color:#37474F;
+}</string>
+     </property>
+     <property name="text">
+      <string>Coins</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="buttonBack">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>520</y>
+       <width>181</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+background-color: rgb(130, 130, 130);
+background-image: url(../img/icon_back.png);
+background-repeat:no-repeat;
+background-position:left middle;
+color: rgb(255, 255, 255);
+border-radius:15px;
+padding:5 5px;
+font-size:18px;
+}
+QPushButton:hover {
+background-color: rgb(120, 120, 120);
+color: rgb(255, 255, 255);
+}</string>
+     </property>
+     <property name="text">
+      <string>Back</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>140</y>
+       <width>591</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size:28px;
+color:white;</string>
+     </property>
+     <property name="text">
+      <string>Choose what you would like to deposit.</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_2">
+    <widget class="QPushButton" name="buttonCancel2">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>520</y>
+       <width>181</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+background-color: rgb(130, 130, 130);
+background-image: url(../img/icon_back.png);
+background-repeat:no-repeat;
+background-position:left middle;
+color: rgb(255, 255, 255);
+border-radius:15px;
+padding:5 5px;
+font-size:20px;
+}
+QPushButton:hover {
+background-color: rgb(120, 120, 120);
+color: rgb(255, 255, 255);
+}</string>
+     </property>
+     <property name="text">
+      <string>Cancel</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="buttonContinue2">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>520</y>
+       <width>181</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+background-color: #4CAF50;
+background-image: url(../img/icon_confirm.png);
+background-repeat: no-repeat;
+background-position: right middle;
+color: rgb(255, 255, 255);
+border-radius: 15px;
+padding:5 5px;
+font-size:20px;
+}
+QPushButton:hover {
+background-color: #43A047;
+color: rgb(245, 245, 245);
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Continue</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>120</y>
+       <width>551</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size:28px;
+color:white;</string>
+     </property>
+     <property name="text">
+      <string>Please insert your coins and press Continue.</string>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="graphicsView">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>270</y>
+       <width>100</width>
+       <height>100</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image:url(../img/coins.png);
+background-repeat:no-repeat;
+border:none;</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_3">
+    <widget class="QPushButton" name="buttonBills2">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>300</y>
+       <width>261</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+background-color: rgb(255, 255, 255);
+color: #616161;
+border-radius:20px;
+font-size:22px;
+border:3px solid #ECEFF1;
+}
+QPushButton:hover {
+background-color: #ECEFF1;
+color:#37474F;
+}</string>
+     </property>
+     <property name="text">
+      <string>Deposit bills</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="buttonCoins2">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>300</y>
+       <width>261</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+background-color: rgb(255, 255, 255);
+color: #616161;
+border-radius:20px;
+font-size:22px;
+border:3px solid #ECEFF1;
+}
+QPushButton:hover {
+background-color: #ECEFF1;
+color:#37474F;
+}</string>
+     </property>
+     <property name="text">
+      <string>Deposit coins</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>100</y>
+       <width>701</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size:28px;
+color:white;</string>
+     </property>
+     <property name="text">
+      <string>Press below if you wish to deposit more bills or coins.</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>160</y>
+       <width>591</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size:28px;
+color:white;</string>
+     </property>
+     <property name="text">
+      <string>Otherwise press Confirm to finish depositing.</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="buttonConfirm">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>520</y>
+       <width>181</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+background-color: #4CAF50;
+background-image: url(../img/icon_confirm.png);
+background-repeat: no-repeat;
+background-position: right middle;
+color: rgb(255, 255, 255);
+border-radius: 15px;
+padding:5 5px;
+font-size:20px;
+}
+QPushButton:hover {
+background-color: #43A047;
+color: rgb(245, 245, 245);
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Confirm</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_4">
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>110</y>
+       <width>421</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size:28px;
+color:white;</string>
+     </property>
+     <property name="text">
+      <string>We have processed your money. </string>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="tableWidget">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>150</y>
+       <width>131</width>
+       <height>335</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QTableWidget {
+color: #546E7A;
+gridline-color: #ECEFF1;
+border-color: red;
+font: 18px;
+background-color:#FAFAFA;
+alternate-background-color:#F5F5F5;
+font-weight:bold;
+border:1px solid white;
+}
+QHeaderView::section {
+background-color: #fff;
+color: #546E7A;
+height: 35px;
+font: 18px;
+text-align:center;
+}
+QHeaderView::item {
+background-color: blue;
+color: white;
+height: 35px;
+font: 15px;
+text-align:center;
+}
+QTableView::item:focus{
+border: 2px solid rgb(242, 128, 133);
+background-color: red;
+}</string>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustToContents</enum>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::NoSelection</enum>
+     </property>
+     <attribute name="horizontalHeaderVisible">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="horizontalHeaderHighlightSections">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderCascadingSectionResizes">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderDefaultSectionSize">
+      <number>30</number>
+     </attribute>
+     <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <row>
+      <property name="text">
+       <string>50€</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>20€</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>10€</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>5€</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>2€</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>1€</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>50snt</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>20snt</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>10snt</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>5snt</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string/>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string/>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string/>
+      </property>
+     </row>
+     <column>
+      <property name="text">
+       <string>Amount</string>
+      </property>
+     </column>
+     <item row="1" column="0">
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item row="4" column="0">
+      <property name="text">
+       <string>3</string>
+      </property>
+     </item>
+     <item row="6" column="0">
+      <property name="text">
+       <string>10</string>
+      </property>
+     </item>
+     <item row="9" column="0">
+      <property name="text">
+       <string>32</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QGraphicsView" name="graphicsView_3">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>320</y>
+       <width>100</width>
+       <height>100</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image:url(../img/receipt.png);
+background-repeat:no-repeat;
+border:none;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>250</y>
+       <width>341</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size:25px;
+color:white;</string>
+     </property>
+     <property name="text">
+      <string>Please take the receipt.</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>190</y>
+       <width>491</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size:25px;
+color:white;</string>
+     </property>
+     <property name="text">
+      <string>On the side is summary of your deposit.</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="buttonFinish">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>520</y>
+       <width>181</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+background-color: #4CAF50;
+background-image: url(../img/icon_confirm.png);
+background-repeat: no-repeat;
+background-position: right middle;
+color: rgb(255, 255, 255);
+border-radius: 15px;
+padding:5 5px;
+font-size:20px;
+}
+QPushButton:hover {
+background-color: #43A047;
+color: rgb(245, 245, 245);
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Finish</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_1">
+    <widget class="QPushButton" name="buttonCancel">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>520</y>
+       <width>181</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+background-color: rgb(130, 130, 130);
+background-image: url(../img/icon_back.png);
+background-repeat:no-repeat;
+background-position:left middle;
+color: rgb(255, 255, 255);
+border-radius:15px;
+padding:5 5px;
+font-size:20px;
+}
+QPushButton:hover {
+background-color: rgb(120, 120, 120);
+color: rgb(255, 255, 255);
+}</string>
+     </property>
+     <property name="text">
+      <string>Cancel</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>120</y>
+       <width>551</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size:28px;
+color:white;</string>
+     </property>
+     <property name="text">
+      <string>Please insert your bills and press Continue.</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="buttonContinue">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>520</y>
+       <width>181</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+background-color: #4CAF50;
+background-image: url(../img/icon_confirm.png);
+background-repeat: no-repeat;
+background-position: right middle;
+color: rgb(255, 255, 255);
+border-radius: 15px;
+padding:5 5px;
+font-size:20px;
+}
+QPushButton:hover {
+background-color: #43A047;
+color: rgb(245, 245, 245);
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Continue</string>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="graphicsView_2">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>270</y>
+       <width>100</width>
+       <height>100</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image:url(../img/bills.png);
+background-repeat:no-repeat;
+border:none;</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

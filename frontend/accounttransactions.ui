@@ -48,14 +48,30 @@
   <widget class="QPushButton" name="cancelButton">
    <property name="geometry">
     <rect>
-     <x>640</x>
-     <y>530</y>
-     <width>121</width>
+     <x>30</x>
+     <y>520</y>
+     <width>171</width>
      <height>51</height>
     </rect>
    </property>
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+background-color: rgb(130, 130, 130);
+background-image: url(../img/icon_back.png);
+background-repeat:no-repeat;
+background-position:left middle;
+color: rgb(255, 255, 255);
+border-radius:15px;
+padding:5 5px;
+font-size:20px;
+}
+QPushButton:hover {
+background-color: rgb(120, 120, 120);
+color: rgb(255, 255, 255);
+}</string>
    </property>
    <property name="text">
     <string>Cancel</string>
@@ -64,21 +80,26 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>50</y>
+     <x>30</x>
+     <y>90</y>
      <width>321</width>
      <height>41</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">font-size:22px;
+color:white;
+font-weight:bold;</string>
+   </property>
    <property name="text">
-    <string>Käyttäjän nimi tähän</string>
+    <string>Konsta Koodaaja</string>
    </property>
   </widget>
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>240</y>
+     <y>140</y>
      <width>571</width>
      <height>341</height>
     </rect>
@@ -123,7 +144,7 @@ background-color: red;
     <bool>true</bool>
    </attribute>
    <attribute name="horizontalHeaderStretchLastSection">
-    <bool>false</bool>
+    <bool>true</bool>
    </attribute>
    <attribute name="verticalHeaderVisible">
     <bool>false</bool>

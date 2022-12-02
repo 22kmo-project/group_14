@@ -23,7 +23,7 @@ Balance::Balance(QWidget *parent) :
     ui->tableWidget->setItem(0,2,amount);
     ui->tableWidget->setItem(0,3,date);
 
-    ui->label_2->setText("2000,00");
+    ui->textBalance->setText("2000,00");
 }
 
 Balance::~Balance()

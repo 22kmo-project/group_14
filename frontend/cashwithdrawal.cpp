@@ -118,9 +118,7 @@ void CashWithdrawal::button_100()
     selectedAmount = 100;
 }
 
-
 void CashWithdrawal::on_button_back_2_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
 }
-

@@ -7,6 +7,7 @@ UserMenu::UserMenu(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(ui->button_cash, &QPushButton::clicked, this, &UserMenu::button_cash);
+    connect(ui->button_deposit, &QPushButton::clicked, this, &UserMenu::button_deposit);
     connect(ui->button_donation, &QPushButton::clicked, this, &UserMenu::button_donation);
     connect(ui->button_balance, &QPushButton::clicked, this, &UserMenu::button_balance);
     connect(ui->button_transactions, &QPushButton::clicked, this, &UserMenu::button_transactions);
@@ -41,4 +42,9 @@ void UserMenu::button_donation()
 void UserMenu::button_cash()
 {
     emit changeWidget(3);
+}
+
+void UserMenu::button_deposit()
+{
+    emit changeWidget(7);
 }

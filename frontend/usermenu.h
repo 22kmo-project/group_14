@@ -21,6 +21,7 @@ private slots:
     void button_transactions();
     void button_donation();
     void button_cash();
+    void button_deposit();
 
 private:
     Ui::UserMenu *ui;

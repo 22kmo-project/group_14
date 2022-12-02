@@ -12,6 +12,7 @@
 #include <charity.h>
 #include <balance.h>
 #include <accounttransactions.h>
+#include <deposit.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -44,5 +45,6 @@ private:
     charity charity;
     Balance balance;
     accountTransactions accountTransaction;
+    Deposit deposit;
 };
 #endif // MAINWINDOW_H
