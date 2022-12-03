@@ -23,7 +23,8 @@ Balance::Balance(QWidget *parent) :
     ui->tableWidget->setItem(0,2,amount);
     ui->tableWidget->setItem(0,3,date);
 
-    ui->label_2->setText("2000,00");
+    //ui->textBalance->setText("Balance: 512.30 €");
+    //ui->textCreditLimit->setText("Credit limit: 1000 €");
 }
 
 Balance::~Balance()

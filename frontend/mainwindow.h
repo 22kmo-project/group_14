@@ -12,6 +12,7 @@
 #include <charity.h>
 #include <balance.h>
 #include <accounttransactions.h>
+#include <deposit.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -28,12 +29,14 @@ public:
 private slots:
     void loginClicked();
     void loginSlot(QNetworkReply* reply);
+    void testSlot(QNetworkReply *reply);
     void moveToIndex(int);
 
 private:
     Ui::MainWindow *ui;
     QPushButton* loginButton;
     QNetworkAccessManager *loginManager;
+    QNetworkAccessManager *testManager;
     QNetworkReply *reply;
     QByteArray responseData;
     QString idCard;
@@ -44,5 +47,6 @@ private:
     charity charity;
     Balance balance;
     accountTransactions accountTransaction;
+    Deposit deposit;
 };
 #endif // MAINWINDOW_H

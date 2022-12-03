@@ -36,8 +36,8 @@
      <widget class="QLabel" name="idCardLabel">
       <property name="geometry">
        <rect>
-        <x>290</x>
-        <y>130</y>
+        <x>300</x>
+        <y>135</y>
         <width>191</width>
         <height>51</height>
        </rect>
@@ -46,14 +46,14 @@
        <string notr="true">color:white;</string>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Card number&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Card number&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QLabel" name="passwordLabel">
       <property name="geometry">
        <rect>
-        <x>290</x>
-        <y>240</y>
+        <x>300</x>
+        <y>245</y>
         <width>191</width>
         <height>51</height>
        </rect>
@@ -62,7 +62,7 @@
        <string notr="true">color:white;</string>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;PIN code&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;PIN code&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QLabel" name="infoLabel">
@@ -84,7 +84,7 @@
        <string notr="true">background:rgba(255,255,255,0.15);
 font-size:20px;
 color:white;
-border-radius:5px;
+border-radius:10px;
 padding:10px;</string>
       </property>
       <property name="text">
@@ -96,16 +96,17 @@ padding:10px;</string>
        <rect>
         <x>290</x>
         <y>290</y>
-        <width>221</width>
-        <height>51</height>
+        <width>231</width>
+        <height>55</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">background:white;
-border-radius:5px;
+border-radius:15px;
 padding:0 10px;
-color:black;
-font-size:18px;</string>
+color:#37474F;
+font-size:22px;
+letter-spacing:1px;</string>
       </property>
       <property name="text">
        <string/>
@@ -122,16 +123,17 @@ font-size:18px;</string>
        <rect>
         <x>290</x>
         <y>180</y>
-        <width>221</width>
-        <height>51</height>
+        <width>231</width>
+        <height>55</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">background:white;
-border-radius:5px;
+border-radius:15px;
 padding:0 10px;
-color:black;
-font-size:18px;</string>
+color:#37474F;
+font-size:22px;
+letter-spacing:1px;</string>
       </property>
       <property name="text">
        <string/>
@@ -145,19 +147,26 @@ font-size:18px;</string>
        <rect>
         <x>290</x>
         <y>390</y>
-        <width>221</width>
-        <height>51</height>
+        <width>231</width>
+        <height>55</height>
        </rect>
       </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">background:white;
-border-radius:5px;
-
-color:black;
-font-size:19px;</string>
+       <string notr="true">QPushButton {
+background-color: white;
+border-radius:15px;
+color:#616161;
+font-size:20px;
+letter-spacing:1px;
+border:3px solid #ECEFF1;
+}
+QPushButton:hover {
+background-color: #ECEFF1;
+color:#37474F;
+}</string>
       </property>
       <property name="text">
        <string>Login</string>

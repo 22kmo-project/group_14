@@ -16,9 +16,9 @@
   <widget class="QPushButton" name="creditButton">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>300</y>
-     <width>151</width>
+     <x>120</x>
+     <y>280</y>
+     <width>211</width>
      <height>71</height>
     </rect>
    </property>
@@ -33,17 +33,14 @@
    <property name="styleSheet">
     <string notr="true">QPushButton {
 background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);
-border-radius:5px;
-padding:5 5px;
-font-size:18px;
+color: #616161;
+border-radius:20px;
+font-size:22px;
+border:3px solid #ECEFF1;
 }
 QPushButton:hover {
-background-color: rgb(245, 245, 245);
-color: rgb(10, 10, 10);
-border-radius:8px;
-padding:5 5px;
-font-size:18px;
+background-color: #ECEFF1;
+color:#37474F;
 }</string>
    </property>
    <property name="text">
@@ -53,9 +50,9 @@ font-size:18px;
   <widget class="QPushButton" name="debitButton">
    <property name="geometry">
     <rect>
-     <x>420</x>
-     <y>300</y>
-     <width>151</width>
+     <x>470</x>
+     <y>280</y>
+     <width>211</width>
      <height>71</height>
     </rect>
    </property>
@@ -70,17 +67,14 @@ font-size:18px;
    <property name="styleSheet">
     <string notr="true">QPushButton {
 background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);
-border-radius:5px;
-padding:5 5px;
-font-size:18px;
+color: #616161;
+border-radius:20px;
+font-size:22px;
+border:3px solid #ECEFF1;
 }
 QPushButton:hover {
-background-color: rgb(245, 245, 245);
-color: rgb(10, 10, 10);
-border-radius:8px;
-padding:5 5px;
-font-size:18px;
+background-color: #ECEFF1;
+color:#37474F;
 }</string>
    </property>
    <property name="text">
@@ -92,15 +86,13 @@ font-size:18px;
     <rect>
      <x>270</x>
      <y>140</y>
-     <width>221</width>
+     <width>411</width>
      <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-radius:5px;
-padding:0 10px;
-color:white;
-font-size:20px;</string>
+    <string notr="true">color:white;
+font-size:28px;</string>
    </property>
    <property name="text">
     <string>Choose credit or debit</string>

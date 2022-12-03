@@ -16,14 +16,17 @@ public:
     ~UserMenu();
 
 private slots:
+    void getAccountInfo(int);
     void button_logout();
     void button_balance();
     void button_transactions();
     void button_donation();
     void button_cash();
+    void button_deposit();
 
 private:
     Ui::UserMenu *ui;
+    int accountType;
 
 signals:
     void changeWidget(int);
