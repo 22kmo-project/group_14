@@ -20,6 +20,7 @@ private:
 
 signals:
     void changeWidget(int);
+    void chooseAccountType(int);
 
 private slots:
     void debitButton();

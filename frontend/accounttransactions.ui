@@ -16,71 +16,124 @@
   <widget class="QPushButton" name="nextpageButton">
    <property name="geometry">
     <rect>
-     <x>640</x>
-     <y>220</y>
-     <width>121</width>
-     <height>51</height>
+     <x>630</x>
+     <y>214</y>
+     <width>65</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+background-color: rgb(255, 255, 255);
+background-image: url(../img/icon_up.png);
+background-repeat:no-repeat;
+background-position:center center;
+color: #616161;
+border-radius:10px;
+font-size:15px;
+border:3px solid #ECEFF1;
+}
+QPushButton:hover {
+background-color: #ECEFF1;
+color:#37474F;
+}</string>
+   </property>
    <property name="text">
-    <string>Next page</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="previouspageButton">
    <property name="geometry">
     <rect>
-     <x>640</x>
-     <y>290</y>
-     <width>121</width>
-     <height>51</height>
+     <x>630</x>
+     <y>360</y>
+     <width>65</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+background-color: rgb(255, 255, 255);
+background-image: url(../img/icon_down.png);
+background-repeat:no-repeat;
+background-position:center center;
+color: #616161;
+border-radius:10px;
+font-size:15px;
+border:3px solid #ECEFF1;
+}
+QPushButton:hover {
+background-color: #ECEFF1;
+color:#37474F;
+}</string>
+   </property>
    <property name="text">
-    <string>Previous page</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="cancelButton">
    <property name="geometry">
     <rect>
-     <x>640</x>
-     <y>530</y>
-     <width>121</width>
+     <x>30</x>
+     <y>520</y>
+     <width>161</width>
      <height>51</height>
     </rect>
    </property>
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+background-color: rgb(130, 130, 130);
+background-image: url(../img/icon_back.png);
+background-repeat:no-repeat;
+background-position:left middle;
+color: rgb(255, 255, 255);
+border-radius:15px;
+padding:5 5px;
+font-size:18px;
+}
+QPushButton:hover {
+background-color: rgb(120, 120, 120);
+color: rgb(255, 255, 255);
+}</string>
+   </property>
    <property name="text">
-    <string>Cancel</string>
+    <string>Back</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="textCustomerName">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>50</y>
-     <width>321</width>
+     <x>40</x>
+     <y>90</y>
+     <width>401</width>
      <height>41</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">font-size:28px;
+color:white;
+font-weight:bold;</string>
+   </property>
    <property name="text">
-    <string>Käyttäjän nimi tähän</string>
+    <string>Teppo Testaaja</string>
    </property>
   </widget>
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>240</y>
-     <width>571</width>
-     <height>341</height>
+     <x>40</x>
+     <y>150</y>
+     <width>551</width>
+     <height>337</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -123,7 +176,7 @@ background-color: red;
     <bool>true</bool>
    </attribute>
    <attribute name="horizontalHeaderStretchLastSection">
-    <bool>false</bool>
+    <bool>true</bool>
    </attribute>
    <attribute name="verticalHeaderVisible">
     <bool>false</bool>

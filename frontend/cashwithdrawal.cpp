@@ -62,18 +62,13 @@ void CashWithdrawal::withdrawSlot(QNetworkReply *reply)
         {
             if(success == 0)
             {
-                qDebug() << "Sorry. You have insufficient funds available. Your current balance:" << balance << "Your credit limit:" << creditLimit;
                 ui->stackedWidget->setCurrentIndex(2);
-                ui->label_4->setText("Sorry. You have insufficient funds available.\n Your current balance: €" + QString::number(balance));
-                // Vaihdetaan sitten stacked widgettiä cashWithdrawalin sisällä sivulle joka
-                // näyttää virheilmoituksen sekä napin jolla voi palata näkymään jossa valitaan nostosumma
+                ui->label_4->setText("Sorry. You have insufficient funds available.\n\n Your current balance: " + QString::number(balance) + " €");
             }
             else
             {
-                qDebug() << "Your transaction is complete. Your remaining balance is" << balance << "€. Please take your cash and receipt. Your credit limit:" << creditLimit;
                 ui->stackedWidget->setCurrentIndex(0);
-                ui->label_3->setText("Your transaction is complete.\n Please take your cash and receipt!\n Your remaining balance is €" + QString::number(balance));
-                // Vaihdetaan näkymään jossa eri viesti sekä nappula (tai vaikka 5s automaattinen siirto) päävalikkoon(?)
+                ui->label_3->setText("Your transaction is complete.\n\n Please take your cash and receipt!\n\n Your remaining balance is " + QString::number(balance) + " €");
             }
         }
     }
@@ -125,4 +120,3 @@ void CashWithdrawal::on_button_back_2_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
 }
-

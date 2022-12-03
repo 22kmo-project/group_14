@@ -18,10 +18,12 @@ ChooseAccount::~ChooseAccount()
 void ChooseAccount::debitButton()
 {
     emit changeWidget(2);
+    emit chooseAccountType(0);
 }
 
 void ChooseAccount::creditButton()
 {
     emit changeWidget(2);
+    emit chooseAccountType(1);
 }
 

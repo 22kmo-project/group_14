@@ -26,7 +26,7 @@
     <string notr="true"/>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>3</number>
    </property>
    <widget class="QWidget" name="page_3">
     <widget class="QLabel" name="label_3">
@@ -78,15 +78,15 @@
      <property name="styleSheet">
       <string notr="true">QPushButton {
 background-color: rgb(255, 255, 255);
-color: #263238;
+color: #616161;
 border-radius:20px;
-padding:5 5px;
-font-size:25px;
+font-size:28px;
+border:3px solid #ECEFF1;
 }
 QPushButton:hover {
-background-color: rgb(235, 235, 235);
-}
-</string>
+background-color: #ECEFF1;
+color:#37474F;
+}</string>
      </property>
      <property name="text">
       <string>20€</string>
@@ -132,13 +132,14 @@ color:white;</string>
      <property name="styleSheet">
       <string notr="true">QPushButton {
 background-color: rgb(255, 255, 255);
-color: #263238;
+color: #616161;
 border-radius:20px;
-padding:5 5px;
-font-size:25px;
+font-size:28px;
+border:3px solid #ECEFF1;
 }
 QPushButton:hover {
-background-color: rgb(235, 235, 235);
+background-color: #ECEFF1;
+color:#37474F;
 }</string>
      </property>
      <property name="text">
@@ -165,13 +166,14 @@ background-color: rgb(235, 235, 235);
      <property name="styleSheet">
       <string notr="true">QPushButton {
 background-color: rgb(255, 255, 255);
-color: #263238;
+color: #616161;
 border-radius:20px;
-padding:5 5px;
-font-size:25px;
+font-size:28px;
+border:3px solid #ECEFF1;
 }
 QPushButton:hover {
-background-color: rgb(235, 235, 235);
+background-color: #ECEFF1;
+color:#37474F;
 }</string>
      </property>
      <property name="text">
@@ -215,8 +217,8 @@ background-color: rgb(235, 235, 235);
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>530</y>
-       <width>211</width>
+       <y>520</y>
+       <width>181</width>
        <height>51</height>
       </rect>
      </property>
@@ -268,13 +270,14 @@ color: rgb(255, 255, 255);
      <property name="styleSheet">
       <string notr="true">QPushButton {
 background-color: rgb(255, 255, 255);
-color: #263238;
+color: #616161;
 border-radius:20px;
-padding:5 5px;
-font-size:25px;
+font-size:28px;
+border:3px solid #ECEFF1;
 }
 QPushButton:hover {
-background-color: rgb(235, 235, 235);
+background-color: #ECEFF1;
+color:#37474F;
 }</string>
      </property>
      <property name="text">
@@ -284,9 +287,9 @@ background-color: rgb(235, 235, 235);
     <widget class="QPushButton" name="button_confirm">
      <property name="geometry">
       <rect>
-       <x>550</x>
-       <y>530</y>
-       <width>211</width>
+       <x>590</x>
+       <y>520</y>
+       <width>181</width>
        <height>51</height>
       </rect>
      </property>
@@ -323,10 +326,10 @@ color: rgb(245, 245, 245);
     <widget class="QPushButton" name="button_cancel2">
      <property name="geometry">
       <rect>
-       <x>300</x>
-       <y>470</y>
-       <width>211</width>
-       <height>61</height>
+       <x>30</x>
+       <y>520</y>
+       <width>181</width>
+       <height>51</height>
       </rect>
      </property>
      <property name="font">
@@ -334,12 +337,17 @@ color: rgb(245, 245, 245);
        <pointsize>-1</pointsize>
       </font>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="layoutDirection">
       <enum>Qt::LeftToRight</enum>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
 background-color: rgb(130, 130, 130);
+background-image: url(../img/icon_back.png);
+background-repeat:no-repeat;
 background-position:left middle;
 color: rgb(255, 255, 255);
 border-radius:15px;
@@ -463,9 +471,9 @@ border-radius: 25px;</string>
     <widget class="QPushButton" name="button_accept">
      <property name="geometry">
       <rect>
-       <x>550</x>
-       <y>500</y>
-       <width>161</width>
+       <x>590</x>
+       <y>520</y>
+       <width>181</width>
        <height>51</height>
       </rect>
      </property>
@@ -474,19 +482,25 @@ border-radius: 25px;</string>
        <pointsize>-1</pointsize>
       </font>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
-background-color: rgb(130, 130, 130);
-background-position:left middle;
+background-color: #4CAF50;
+background-image: url(../img/icon_confirm.png);
+background-repeat: no-repeat;
+background-position: right middle;
 color: rgb(255, 255, 255);
-border-radius:15px;
+border-radius: 15px;
 padding:5 5px;
 font-size:20px;
 }
 QPushButton:hover {
-background-color: rgb(120, 120, 120);
-color: rgb(255, 255, 255);
-}</string>
+background-color: #43A047;
+color: rgb(245, 245, 245);
+}
+</string>
      </property>
      <property name="text">
       <string>Accept</string>
@@ -495,9 +509,9 @@ color: rgb(255, 255, 255);
     <widget class="QPushButton" name="button_back_2">
      <property name="geometry">
       <rect>
-       <x>110</x>
-       <y>500</y>
-       <width>161</width>
+       <x>30</x>
+       <y>520</y>
+       <width>181</width>
        <height>51</height>
       </rect>
      </property>
@@ -506,9 +520,14 @@ color: rgb(255, 255, 255);
        <pointsize>-1</pointsize>
       </font>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
 background-color: rgb(130, 130, 130);
+background-image: url(../img/icon_back.png);
+background-repeat:no-repeat;
 background-position:left middle;
 color: rgb(255, 255, 255);
 border-radius:15px;
