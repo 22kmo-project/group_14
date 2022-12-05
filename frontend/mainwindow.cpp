@@ -36,6 +36,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     this->statusBar()->setSizeGripEnabled(false); // Hides resizing icon from bottom right corner
     this->setFixedSize(QSize(800, 600)); // Prevents resizing window
+
+    ptimer = new QTimer(this);
+    connect(ptimer, SIGNAL(timeout()), this, SLOT(timeComparison()));
 }
 
 MainWindow::~MainWindow()
@@ -47,6 +50,8 @@ void MainWindow::loginClicked()
 {
     QString idCard = ui->idCardLine->text();
     QString password = ui->passwordLine->text();
+    ui->idCardLine->clear();
+    ui->passwordLine->clear();
 
     QJsonObject jsonObj;
     jsonObj.insert("id_card", idCard);
@@ -73,7 +78,7 @@ void MainWindow::loginSlot(QNetworkReply *reply)
     {
         ui->infoLabel->setVisible(1);
         ui->infoLabel->setText("Server not responding");
-        ui->stackedWidget->setCurrentIndex(1); // Poista rivin kommentointi jos haluat testata koodia ilman tietokantayhteyttä.
+        //ui->stackedWidget->setCurrentIndex(1); // Poista rivin kommentointi jos haluat testata koodia ilman tietokantayhteyttä.
     }
     else
     {
@@ -143,4 +148,29 @@ void MainWindow::testSlot(QNetworkReply *reply)
 void MainWindow::moveToIndex(int index)
 {
     ui->stackedWidget->setCurrentIndex(index);
+    time = 0; //nollataan kulunut aika
+    ptimer->start(1000); //startataan timer
 }
+
+void MainWindow::timeComparison()
+{
+    qDebug() <<"lasketaan";
+       time ++; //lasketaan aikaa
+       qDebug() <<time;
+
+       if (ui->stackedWidget->currentIndex()== 1 && time > 10){
+           ui->stackedWidget->setCurrentIndex(0);
+           ptimer->stop(); //Choose account näkymässä 10s aikaa valita credit tai debit
+       }
+       if (ui->stackedWidget->currentIndex()==2 && time > 30){
+           ui->stackedWidget->setCurrentIndex(0);
+           ptimer->stop(); //User menussa 30s niin kirjataan ulos
+       }
+       if(ui->stackedWidget->currentIndex()>2 && time > 10){
+           ui->stackedWidget->setCurrentIndex(2);
+           ptimer->stop();
+           time = 0;
+           ptimer->start();//Muissa näkymissä 10s ja palataan user menuun
+    }
+}
+
