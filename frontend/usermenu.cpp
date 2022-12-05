@@ -25,11 +25,12 @@ void UserMenu::switchedToUserMenu(int type)
     accountType = type;
     qDebug() << "AccountMenuun siirrytty ->";
     qDebug() << "Account type selected (1=credit, 0=debit): " << accountType;
+    getAccountInfo();
 }
 
 void UserMenu::getAccountInfo()
 {
-    QString cardId = "999999"; // Tähän taas pitäisi saada tuotua käytössä olevan kortin ID
+    QString cardId = "123456"; // Tähän taas pitäisi saada tuotua käytössä olevan kortin ID
     QString site_url=DatabaseURL::getBaseURL()+"/account/getinfo/"+cardId+"/"+QString::number(accountType);
     QNetworkRequest request((site_url));
     //WEBTOKEN ALKU
