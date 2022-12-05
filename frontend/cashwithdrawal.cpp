@@ -63,12 +63,14 @@ void CashWithdrawal::withdrawSlot(QNetworkReply *reply)
             if(success == 0)
             {
                 ui->stackedWidget->setCurrentIndex(2);
-                ui->label_4->setText("Sorry. You have insufficient funds available.\n\n Your current balance: " + QString::number(balance) + " €");
+                //ui->label_4->setText("Sorry. You have insufficient funds available.\n\n Your current balance: " + QString::number(balance) + " €");
+                ui->label_4->setText("Sinulla ei ole tarpeeksi rahaa.\n\n Nykyinen saldosi on: " + QString::number(balance) + " €");
             }
             else
             {
                 ui->stackedWidget->setCurrentIndex(0);
-                ui->label_3->setText("Your transaction is complete.\n\n Please take your cash and receipt!\n\n Your remaining balance is " + QString::number(balance) + " €");
+                //ui->label_3->setText("Your transaction is complete.\n\n Please take your cash and receipt!\n\n Your remaining balance is " + QString::number(balance) + " €");
+                ui->label_3->setText("Tapahtuma on suoritettu.\n\n Ota rahat ja kuitti!\n\n Nykyinen saldosi on " + QString::number(balance) + " €");
             }
         }
     }

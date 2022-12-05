@@ -44,7 +44,7 @@ color:#37474F;
 }</string>
    </property>
    <property name="text">
-    <string>Cash</string>
+    <string>Nosto</string>
    </property>
   </widget>
   <widget class="QPushButton" name="button_transactions">
@@ -78,7 +78,7 @@ color:#37474F;
 }</string>
    </property>
    <property name="text">
-    <string>Transactions</string>
+    <string>Tapahtumat</string>
    </property>
   </widget>
   <widget class="QPushButton" name="button_donation">
@@ -112,7 +112,7 @@ color:#37474F;
 }</string>
    </property>
    <property name="text">
-    <string>Donation</string>
+    <string>Lahjoitus</string>
    </property>
   </widget>
   <widget class="QPushButton" name="button_logout">
@@ -147,7 +147,7 @@ background-color: #F44336;
 }</string>
    </property>
    <property name="text">
-    <string>Log out</string>
+    <string>Kirjaudu ulos</string>
    </property>
   </widget>
   <widget class="QPushButton" name="button_balance">
@@ -181,7 +181,7 @@ color:#37474F;
 }</string>
    </property>
    <property name="text">
-    <string>Balance</string>
+    <string>Saldo</string>
    </property>
   </widget>
   <widget class="QPushButton" name="button_deposit">
@@ -210,7 +210,7 @@ color:#37474F;
 }</string>
    </property>
    <property name="text">
-    <string>Deposit</string>
+    <string>Talletus</string>
    </property>
   </widget>
   <widget class="QLabel" name="textCustomerName">

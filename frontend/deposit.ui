@@ -49,7 +49,7 @@ color:#37474F;
 }</string>
      </property>
      <property name="text">
-      <string>Bills</string>
+      <string>Seteleitä</string>
      </property>
     </widget>
     <widget class="QPushButton" name="buttonCoins">
@@ -78,7 +78,7 @@ color:#37474F;
 }</string>
      </property>
      <property name="text">
-      <string>Coins</string>
+      <string>Kolikoita</string>
      </property>
     </widget>
     <widget class="QPushButton" name="buttonBack">
@@ -110,15 +110,15 @@ color: rgb(255, 255, 255);
 }</string>
      </property>
      <property name="text">
-      <string>Back</string>
+      <string>Takaisin</string>
      </property>
     </widget>
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>170</x>
-       <y>140</y>
-       <width>591</width>
+       <x>230</x>
+       <y>130</y>
+       <width>351</width>
        <height>51</height>
       </rect>
      </property>
@@ -127,7 +127,10 @@ color: rgb(255, 255, 255);
 color:white;</string>
      </property>
      <property name="text">
-      <string>Choose what you would like to deposit.</string>
+      <string>Valitse mitä haluat tallettaa</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </widget>
@@ -161,7 +164,7 @@ color: rgb(255, 255, 255);
 }</string>
      </property>
      <property name="text">
-      <string>Cancel</string>
+      <string>Takaisin</string>
      </property>
     </widget>
     <widget class="QPushButton" name="buttonContinue2">
@@ -194,15 +197,15 @@ color: rgb(245, 245, 245);
 </string>
      </property>
      <property name="text">
-      <string>Continue</string>
+      <string>Jatka</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_3">
      <property name="geometry">
       <rect>
-       <x>140</x>
-       <y>120</y>
-       <width>551</width>
+       <x>220</x>
+       <y>130</y>
+       <width>361</width>
        <height>91</height>
       </rect>
      </property>
@@ -211,7 +214,10 @@ color: rgb(245, 245, 245);
 color:white;</string>
      </property>
      <property name="text">
-      <string>Please insert your coins and press Continue.</string>
+      <string>Syötä kolikot ja paina Jatka</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QGraphicsView" name="graphicsView">
@@ -257,7 +263,7 @@ color:#37474F;
 }</string>
      </property>
      <property name="text">
-      <string>Deposit bills</string>
+      <string>Seteleitä</string>
      </property>
     </widget>
     <widget class="QPushButton" name="buttonCoins2">
@@ -286,13 +292,13 @@ color:#37474F;
 }</string>
      </property>
      <property name="text">
-      <string>Deposit coins</string>
+      <string>Kolikoita</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_4">
      <property name="geometry">
       <rect>
-       <x>70</x>
+       <x>50</x>
        <y>100</y>
        <width>701</width>
        <height>91</height>
@@ -303,13 +309,16 @@ color:#37474F;
 color:white;</string>
      </property>
      <property name="text">
-      <string>Press below if you wish to deposit more bills or coins.</string>
+      <string>Jatkaaksesi talletusta paina Seteiltä tai Kolikoita</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="label_5">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>100</x>
        <y>160</y>
        <width>591</width>
        <height>91</height>
@@ -320,7 +329,10 @@ color:white;</string>
 color:white;</string>
      </property>
      <property name="text">
-      <string>Otherwise press Confirm to finish depositing.</string>
+      <string>Muussa tapauksessa paina Hyväksy</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QPushButton" name="buttonConfirm">
@@ -353,7 +365,7 @@ color: rgb(245, 245, 245);
 </string>
      </property>
      <property name="text">
-      <string>Confirm</string>
+      <string>Hyväksy</string>
      </property>
     </widget>
    </widget>
@@ -372,7 +384,10 @@ color: rgb(245, 245, 245);
 color:white;</string>
      </property>
      <property name="text">
-      <string>We have processed your money. </string>
+      <string>Olemme käsitelleet talletuksesi</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QTableWidget" name="tableWidget">
@@ -571,9 +586,9 @@ border:none;</string>
     <widget class="QLabel" name="label_7">
      <property name="geometry">
       <rect>
-       <x>380</x>
+       <x>440</x>
        <y>250</y>
-       <width>341</width>
+       <width>141</width>
        <height>61</height>
       </rect>
      </property>
@@ -582,14 +597,17 @@ border:none;</string>
 color:white;</string>
      </property>
      <property name="text">
-      <string>Please take the receipt.</string>
+      <string>Ota kuitti</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="label_8">
      <property name="geometry">
       <rect>
-       <x>300</x>
-       <y>190</y>
+       <x>270</x>
+       <y>180</y>
        <width>491</width>
        <height>61</height>
       </rect>
@@ -599,7 +617,10 @@ color:white;</string>
 color:white;</string>
      </property>
      <property name="text">
-      <string>On the side is summary of your deposit.</string>
+      <string>Listassa näet tallettamasi rahat</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QPushButton" name="buttonFinish">
@@ -632,7 +653,7 @@ color: rgb(245, 245, 245);
 </string>
      </property>
      <property name="text">
-      <string>Finish</string>
+      <string>Lopeta</string>
      </property>
     </widget>
    </widget>
@@ -666,15 +687,15 @@ color: rgb(255, 255, 255);
 }</string>
      </property>
      <property name="text">
-      <string>Back</string>
+      <string>Takaisin</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
-       <x>140</x>
-       <y>120</y>
-       <width>551</width>
+       <x>210</x>
+       <y>140</y>
+       <width>381</width>
        <height>91</height>
       </rect>
      </property>
@@ -683,7 +704,10 @@ color: rgb(255, 255, 255);
 color:white;</string>
      </property>
      <property name="text">
-      <string>Please insert your bills and press Continue.</string>
+      <string>Syötä seteleitä ja paina Jatka.</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QPushButton" name="buttonContinue">
@@ -716,7 +740,7 @@ color: rgb(245, 245, 245);
 </string>
      </property>
      <property name="text">
-      <string>Continue</string>
+      <string>Jatka</string>
      </property>
     </widget>
     <widget class="QGraphicsView" name="graphicsView_2">
