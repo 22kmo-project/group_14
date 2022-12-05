@@ -50,7 +50,8 @@ void UserMenu::getAccountInfoSlot(QNetworkReply *getAccountInfoReply)
     QString customerName = jsonResponse["name"].toString();
     double balance = jsonResponse["balance"].toDouble();
     double creditLimit = jsonResponse["credit_limit"].toDouble();
-    qDebug() << "Name:" << customerName << "Balance:" << balance << "Credit limit:" << creditLimit;
+    int accountId = jsonResponse["id_account"].toInt();
+    qDebug() << "Name:" << customerName << "Balance:" << balance << "Credit limit:" << creditLimit << "Account ID:" << accountId;
     ui->textCustomerName->setText(customerName);
 
     getAccountInfoReply->deleteLater();
