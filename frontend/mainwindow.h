@@ -33,6 +33,7 @@ private slots:
     void moveToIndex(int);
 
 private:
+    void getNumberOfAccounts();
     Ui::MainWindow *ui;
     QPushButton* loginButton;
     QNetworkAccessManager *loginManager;

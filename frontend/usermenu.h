@@ -2,6 +2,10 @@
 #define USERMENU_H
 
 #include <QWidget>
+#include "databaseurl.h"
+#include <QMainWindow>
+#include <QtNetwork>
+#include <QJsonObject>
 
 namespace Ui {
 class UserMenu;
@@ -16,7 +20,8 @@ public:
     ~UserMenu();
 
 private slots:
-    void getAccountInfo(int);
+    void getAccountInfoSlot(QNetworkReply* getAccountInfoReply);
+    void switchedToUserMenu(int);
     void button_logout();
     void button_balance();
     void button_transactions();
@@ -27,6 +32,10 @@ private slots:
 private:
     Ui::UserMenu *ui;
     int accountType;
+    void getAccountInfo();
+    QNetworkAccessManager *getAccountInfoManager;
+    QNetworkReply *getAccountInfoReply;
+    QByteArray responseData;
 
 signals:
     void changeWidget(int);
