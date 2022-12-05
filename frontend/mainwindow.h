@@ -13,6 +13,8 @@
 #include <balance.h>
 #include <accounttransactions.h>
 #include <deposit.h>
+#include <QTimer>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -31,6 +33,7 @@ private slots:
     void loginSlot(QNetworkReply* reply);
     void testSlot(QNetworkReply *reply);
     void moveToIndex(int);
+    void timeComparison();
 
 private:
     void getNumberOfAccounts();
@@ -41,6 +44,8 @@ private:
     QNetworkReply *reply;
     QByteArray responseData;
     QString idCard;
+    QTimer *ptimer;
+    int time;
 
     ChooseAccount chooseAccount;
     UserMenu userMenu;
