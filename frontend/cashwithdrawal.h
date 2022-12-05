@@ -40,7 +40,6 @@ private slots:
     void button_100();
     void on_button_cancel2_clicked();
     void on_button_accept_clicked();
-
     void on_button_back_2_clicked();
 
 signals:

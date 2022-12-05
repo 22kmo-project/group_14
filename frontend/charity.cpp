@@ -42,7 +42,12 @@ void charity::donationSlot(QNetworkReply *reply)
 
 {
     responseData=reply->readAll();
+    QJsonDocument jsonResponseData = QJsonDocument::fromJson(responseData);
     int test = QString::compare(responseData, "false");
+
+    bool success = jsonResponseData[0]["success"].toInt(); // success = 1 if transaction was made and 0 if it failed
+    double balance = jsonResponseData[0]["balance"].toDouble();
+    double creditLimit = jsonResponseData[0]["credit_limit"].toDouble();
 
     if(responseData.length() == 0)
     {
@@ -59,6 +64,7 @@ void charity::donationSlot(QNetworkReply *reply)
             if(test == 0)
             {
                 qDebug() << "Error! Donation failed!.";
+                ui->label_2->setText("Error! Lahjoitus ei onnistunut.\n\n Nykyinen saldosi on " + QString::number(balance) + " €");
                 ui->stackedWidget->setCurrentIndex(2);
 
                 // Vaihdetaan sitten stacked widgettiä cashWithdrawalin sisällä sivulle joka
@@ -67,6 +73,7 @@ void charity::donationSlot(QNetworkReply *reply)
             else
             {
                 qDebug() << "Donation completed successfully.";
+                ui->label->setText("Lahjoitus suoritettu. \n\n Nykyinen saldosi on " + QString::number(balance) + " €");
                 //emit changeWidget(2);
                 ui->stackedWidget->setCurrentIndex(1);
                 // Vaihdetaan näkymään jossa eri viesti sekä nappula (tai vaikka 5s automaattinen siirto) päävalikkoon(?)

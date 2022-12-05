@@ -169,7 +169,7 @@ color:#37474F;
 }</string>
       </property>
       <property name="text">
-       <string>Login</string>
+       <string>Kirjaudu</string>
       </property>
      </widget>
     </widget>

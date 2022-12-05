@@ -84,8 +84,8 @@ color:#37474F;
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>140</y>
+     <x>200</x>
+     <y>150</y>
      <width>411</width>
      <height>51</height>
     </rect>
@@ -95,7 +95,10 @@ color:#37474F;
 font-size:28px;</string>
    </property>
    <property name="text">
-    <string>Choose credit or debit</string>
+    <string>Valitse Credit tai Debit</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
  </widget>

@@ -106,7 +106,7 @@ color: rgb(255, 255, 255);
 }</string>
    </property>
    <property name="text">
-    <string>Back</string>
+    <string>Takaisin</string>
    </property>
   </widget>
   <widget class="QLabel" name="textCustomerName">
