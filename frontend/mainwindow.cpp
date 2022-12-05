@@ -105,7 +105,7 @@ void MainWindow::loginSlot(QNetworkReply *reply)
 
 void MainWindow::getNumberOfAccounts()
 {
-    QString cardId = "999999"; // Tähän pitäisi saada tuotua kortin ID tuolta kirjautumisesta
+    QString cardId = "123456"; // Tähän pitäisi saada tuotua kortin ID tuolta kirjautumisesta
 
     QString site_url=DatabaseURL::getBaseURL()+"/card/info/"+cardId;
     QNetworkRequest request((site_url));
