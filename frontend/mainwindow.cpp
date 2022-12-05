@@ -7,7 +7,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     connect(ui->loginButton, &QPushButton::clicked, this, &MainWindow::loginClicked);
-
     connect(&chooseAccount, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
     connect(&userMenu, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
     connect(&cashWithdrawal, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
@@ -16,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&accountTransaction, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
     connect(&deposit, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
 
-    connect(&chooseAccount, SIGNAL(chooseAccountType(int)), &userMenu, SLOT(getAccountInfo(int)));
+    connect(&chooseAccount, SIGNAL(chooseAccountType(int)), &userMenu, SLOT(switchedToUserMenu(int)));
 
     ui->stackedWidget->insertWidget(1, &chooseAccount); // Lisätään tehdyt widgetit, eli yksittäiset pankkiautomaatin näkymät, ja annetaan niille indeksit
     ui->stackedWidget->insertWidget(2, &userMenu);
@@ -95,22 +94,27 @@ void MainWindow::loginSlot(QNetworkReply *reply)
             else
             {
                 // Eli login onnistui ja haetaan sitten korttiin liitettyjen tilien lukumäärä:
-
-                reply->deleteLater();
-                loginManager->deleteLater();
-
-                QString cardId = "123456"; // Tänne nyt pitäisi saada välitettyä kirjautumisessa käytetty cardId
-                QString site_url=DatabaseURL::getBaseURL()+"/card/info/"+cardId;
-                QNetworkRequest request((site_url));
-                //WEBTOKEN ALKU
-                //request.setRawHeader(QByteArray("Authorization"),(webToken));
-                //WEBTOKEN LOPPU
-                testManager = new QNetworkAccessManager(this);
-                connect(testManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(testSlot(QNetworkReply*)));
-                reply = testManager->get(request);
+                getNumberOfAccounts();
             }
         }
     }
+
+    reply->deleteLater();
+    loginManager->deleteLater();
+}
+
+void MainWindow::getNumberOfAccounts()
+{
+    QString cardId = "999999"; // Tähän pitäisi saada tuotua kortin ID tuolta kirjautumisesta
+
+    QString site_url=DatabaseURL::getBaseURL()+"/card/info/"+cardId;
+    QNetworkRequest request((site_url));
+    //WEBTOKEN ALKU
+    //request.setRawHeader(QByteArray("Authorization"),(webToken));
+    //WEBTOKEN LOPPU
+    testManager = new QNetworkAccessManager(this);
+    connect(testManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(testSlot(QNetworkReply*)));
+    reply = testManager->get(request);
 }
 
 void MainWindow::testSlot(QNetworkReply *reply)
@@ -123,10 +127,9 @@ void MainWindow::testSlot(QNetworkReply *reply)
 
     // Korttiin liitettyjen tilien lukumäärä selvillä ja osataan päättää mihin näkymään siirrytään..
 
-    if (numberOfAccounts == 1)
+    if (numberOfAccounts == 1) // If user has only one account associated with their card, it means they have only debit account and we can skip chooseAccount window
     {
-        moveToIndex(1);
-        //moveToIndex(2); // Lopullisessa versiossa siirrytään oikeasti indeksiin 2 tässä kohtaa koska debit kortille ei tarvitse näyttää chooseAccount-näkymää.
+        moveToIndex(2);
     }
     else
     {

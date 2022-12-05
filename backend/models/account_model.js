@@ -1,6 +1,14 @@
 const db = require('../database');
 
 const account = {
+    getAccountInfo: function (cardId, accountType, callback) {
+        if (accountType == 1) { // 1 = credit card
+            return db.query('SELECT name, balance, credit_limit FROM customer JOIN account ON account.id_customer=customer.id_customer JOIN account_card ON account_card.id_account=account.id_account JOIN card ON card.id_card=account_card.id_card WHERE card.id_card=? AND account.credit_limit>0;', [cardId], callback);
+        } 
+        else if (accountType == 0) { // 0 = debit card
+            return db.query('SELECT name, balance, credit_limit FROM customer JOIN account ON account.id_customer=customer.id_customer JOIN account_card ON account_card.id_account=account.id_account JOIN card ON card.id_card=account_card.id_card WHERE card.id_card=? AND account.credit_limit=0;', [cardId], callback);
+        }
+    },
     deposit: function (data, callback) {
         return db.query('CALL deposit(?,?)', [data.id, data.amount], callback);
     },
@@ -29,7 +37,7 @@ const account = {
                 callback);
     },
     donation: function (data, callback) {
-        return db.query('CALL donation(?,?)', [data.id, data.amount], callback);
+        return db.query("'CALL donation(?,?)'", [data.id, data.amount], callback);
     }
 
 };

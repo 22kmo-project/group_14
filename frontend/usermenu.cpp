@@ -20,17 +20,47 @@ UserMenu::~UserMenu()
     delete ui;
 }
 
-void UserMenu::getAccountInfo(int type)
+void UserMenu::switchedToUserMenu(int type)
 {
     accountType = type;
     qDebug() << "AccountMenuun siirrytty ->";
     qDebug() << "Account type selected (1=credit, 0=debit): " << accountType;
-    ui->textCustomerName->setText("Konsta Koodaaja");
 }
+
+void UserMenu::getAccountInfo()
+{
+    QString cardId = "999999"; // Tähän taas pitäisi saada tuotua käytössä olevan kortin ID
+    QString site_url=DatabaseURL::getBaseURL()+"/account/getinfo/"+cardId+"/"+QString::number(accountType);
+    QNetworkRequest request((site_url));
+    //WEBTOKEN ALKU
+    //request.setRawHeader(QByteArray("Authorization"),(webToken));
+    //WEBTOKEN LOPPU
+    getAccountInfoManager = new QNetworkAccessManager(this);
+    connect(getAccountInfoManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(getAccountInfoSlot(QNetworkReply*)));
+    getAccountInfoReply = getAccountInfoManager->get(request);
+}
+
+void UserMenu::getAccountInfoSlot(QNetworkReply *getAccountInfoReply)
+{
+    QByteArray response_data=getAccountInfoReply->readAll();
+    QJsonDocument jsonResponse = QJsonDocument::fromJson(response_data);
+
+    // Saadaan käyttäjän nimet, saldo ja credit limitti
+    QString customerName = jsonResponse["name"].toString();
+    double balance = jsonResponse["balance"].toDouble();
+    double creditLimit = jsonResponse["credit_limit"].toDouble();
+    qDebug() << "Name:" << customerName << "Balance:" << balance << "Credit limit:" << creditLimit;
+    ui->textCustomerName->setText(customerName);
+
+    getAccountInfoReply->deleteLater();
+    getAccountInfoManager->deleteLater();
+}
+
 
 void UserMenu::button_logout()
 {
     emit changeWidget(0);
+    // joku emit homma tähän joka nollaisi login sivulla input fieldit
 }
 
 void UserMenu::button_balance()

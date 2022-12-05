@@ -3,6 +3,23 @@ const { getBalance } = require('../models/account_model');
 const router = express.Router();
 const account = require('../models/account_model');
 
+router.get('/getinfo/:id/:type',
+ function(request, response) {
+  if (request.params.id, request.params.type) {
+    account.getAccountInfo(request.params.id,request.params.type, function(err, dbResult) {
+      if (err) {
+        response.json(err);
+        console.log("Error");
+      } else {
+        response.json(dbResult[0]);
+        console.log(dbResult[0]);
+      }
+    });
+  } else {
+    console.log("Account ID needed!");
+  }
+});
+
 router.post('/deposit', 
 function(request, response) {
   account.deposit(request.body, function(err, dbResult) {
