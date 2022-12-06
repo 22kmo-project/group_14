@@ -49,7 +49,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Kortin numero&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QLabel" name="passwordLabel">
@@ -68,15 +68,15 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Tunnusluku&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QLabel" name="infoLabel">
       <property name="geometry">
        <rect>
-        <x>210</x>
+        <x>185</x>
         <y>500</y>
-        <width>381</width>
+        <width>441</width>
         <height>51</height>
        </rect>
       </property>
@@ -152,7 +152,7 @@ letter-spacing:1px;</string>
       <property name="geometry">
        <rect>
         <x>290</x>
-        <y>390</y>
+        <y>400</y>
         <width>231</width>
         <height>55</height>
        </rect>
@@ -187,7 +187,7 @@ color:#37474F;
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>29</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
