@@ -70,14 +70,15 @@ void MainWindow::loginClicked()
 void MainWindow::loginSlot(QNetworkReply *reply)
 {
     responseData=reply->readAll();
-    qDebug()<<responseData;
+    QByteArray response_data=responseData;
+    QJsonDocument jsonResponse = QJsonDocument::fromJson(response_data);
+    int isLocked = jsonResponse["isLocked"].toInt();
     int test = QString::compare(responseData, "false");
-    qDebug()<<test;
 
     if(responseData.length()==0)
     {
         ui->infoLabel->setVisible(1);
-        ui->infoLabel->setText("Server not responding");
+        ui->infoLabel->setText("Serveri ei vastaa.");
         //ui->stackedWidget->setCurrentIndex(1); // Poista rivin kommentointi jos haluat testata koodia ilman tietokantayhteyttä.
     }
     else
@@ -85,7 +86,7 @@ void MainWindow::loginSlot(QNetworkReply *reply)
         if(QString::compare(responseData, "-4078")==0)
         {
             ui->infoLabel->setVisible(1);
-            ui->infoLabel->setText("Error in database connection");
+            ui->infoLabel->setText("Virhe tietokantayhteydessä.");
         }
         else
         {
@@ -94,16 +95,23 @@ void MainWindow::loginSlot(QNetworkReply *reply)
                 ui->idCardLine->clear();
                 ui->passwordLine->clear();
                 ui->infoLabel->setVisible(1);
-                ui->infoLabel->setText("Card number and PIN code don't match");
+                ui->infoLabel->setText("Kortin numero ja tunnusluku eivät täsmää.");
             }
             else
             {
-                // Eli login onnistui ja haetaan sitten korttiin liitettyjen tilien lukumäärä:
-                getNumberOfAccounts();
+                if(isLocked == 1)
+                {
+                    ui->infoLabel->setVisible(1);
+                    ui->infoLabel->setText("Liian monta väärää yritystä. Kortti on lukittu.");
+                }
+                else
+                {
+                    // Eli login onnistui ja haetaan sitten korttiin liitettyjen tilien lukumäärä:
+                    getNumberOfAccounts();
+                }
             }
         }
     }
-
     reply->deleteLater();
     loginManager->deleteLater();
 }
@@ -173,4 +181,3 @@ void MainWindow::timeComparison()
            ptimer->start();//Muissa näkymissä 10s ja palataan user menuun
     }
 }
-
