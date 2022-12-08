@@ -20,6 +20,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&balance, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
     connect(&accountTransaction, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
     connect(&deposit, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
+    connect(bankFunction, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
+
+    connect(&chooseAccount, SIGNAL(chooseAccountType(int)), &userMenu, SLOT(switchedToUserMenu(int)));
 
     connect(this, SIGNAL(login(QString, QString)), bankFunction, SLOT(requestLogin(QString, QString)));
     connect(bankFunction, SIGNAL(loginResult(int)), this, SLOT(loginResult(int)));
@@ -56,8 +59,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->stackedWidget->insertWidget(6, &accountTransaction);
     ui->stackedWidget->insertWidget(7, &deposit);
 
-    QPixmap bkgnd("img/background.png"); // These 5 lines sets background image to the window
-    //QPixmap bkgnd("../img/background.png"); // These 5 lines sets background image to the window
+    //QPixmap bkgnd("img/background.png"); // These 5 lines sets background image to the window
+    QPixmap bkgnd("../img/background.png"); // These 5 lines sets background image to the window
     bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Window, bkgnd);
@@ -68,6 +71,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     this->statusBar()->setSizeGripEnabled(false); // Hides resizing icon from bottom right corner
     this->setFixedSize(QSize(800, 600)); // Prevents resizing window
+
+    ptimer = new QTimer(this);
+    connect(ptimer, SIGNAL(timeout()), this, SLOT(timeComparison()));
 }
 
 MainWindow::~MainWindow()
@@ -124,5 +130,31 @@ void MainWindow::loginResult(int result)
             ui->infoLabel->setVisible(1);
             ui->infoLabel->setText("Error in database connection");
             break;
+        case 4:
+            ui->infoLabel->setVisible(1);
+            ui->infoLabel->setText("Liian monta väärää yritystä. Kortti on lukittu.");
+            break;
+    }
+}
+
+void MainWindow::timeComparison()
+{
+    qDebug() << "lasketaan";
+    time++; //lasketaan aikaa
+    qDebug() << time;
+
+    if (ui->stackedWidget->currentIndex() == 1 && time > 10) {
+        ui->stackedWidget->setCurrentIndex(0);
+        ptimer->stop(); //Choose account näkymässä 10s aikaa valita credit tai debit
+    }
+    if (ui->stackedWidget->currentIndex() == 2 && time > 30) {
+        ui->stackedWidget->setCurrentIndex(0);
+        ptimer->stop(); //User menussa 30s niin kirjataan ulos
+    }
+    if (ui->stackedWidget->currentIndex() > 2 && time > 10) {
+        ui->stackedWidget->setCurrentIndex(2);
+        ptimer->stop();
+        time = 0;
+        ptimer->start();//Muissa näkymissä 10s ja palataan user menuun
     }
 }
