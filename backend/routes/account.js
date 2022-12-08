@@ -117,10 +117,12 @@ router.post('/donation',
 function(request, response) {
   account.donation(request.body, function(err, dbResult) {
     if (err) {
+      console.log(request.body + err);
       response.json(err);
     } else {
       if (dbResult["affectedRows"] > 0) { // affectedRows = 1 if donation was successful
         console.log("Success!");
+        console.log(request.body + dbResult);
         response.send(true);
       } else {
         console.log("Insufficient funds!");

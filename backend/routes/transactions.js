@@ -23,6 +23,27 @@ router.get('/:id?',
   }
 });
 
+router.get('/account/:id?',
+ function(request, response) {
+  if (request.params.id) {
+    transactions.getByAccountId(request.params.id, function(err, dbResult) {
+      if (err) {
+        response.json(err);
+      } else {
+        response.json(dbResult);
+      }
+    });
+  } else {
+    transactions.getAll(function(err, dbResult) {
+      if (err) {
+        response.json(err);
+      } else {
+        response.json(dbResult);
+      }
+    });
+  }
+});
+
 
 router.post('/', 
 function(request, response) {

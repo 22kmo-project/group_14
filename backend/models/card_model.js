@@ -4,12 +4,6 @@ const bcrypt = require('bcryptjs');
 const saltRounds = 10;
 
 const card = {
-    checkIfCardLocked: function (id, callback) {
-        return db.query('CALL check_card_status(?)',[id], callback);
-    },
-    updateWrongPinCounter: function (id, callback) {
-        return db.query('UPDATE card SET wrong_pin_counter=wrong_pin_counter+1, wrong_pin_time=NOW() WHERE id_card=?', [id], callback);
-    },
     getNumberOfAccounts: function (id, callback) {
         return db.query('SELECT (SELECT COUNT(*) FROM account JOIN account_card ON account_card.id_account=account.id_account JOIN card ON card.id_card=account_card.id_card WHERE card.id_card=?) AS number_of_accounts', [id], callback); // Returns the number of accounts associated with the card, 1 = only debit account, 2 = debit and credit account.
     },

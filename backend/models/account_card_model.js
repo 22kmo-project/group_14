@@ -17,8 +17,6 @@ const account_card = {
     delete: function (id, callback) {
         return db.query('delete from Account_Card where id_account=?', [id], callback);
     },
-	//Need to rework the update function to somehow differentiate between linked account and card since there can
-	//be multiple instances of linked accounts or cards
     update: function (id, update_data, callback) {
             return db.query(
                 'update Account_Card set id_account=?, id_card=? where id_account=?',
