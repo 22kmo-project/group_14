@@ -37,9 +37,8 @@ const account = {
                 callback);
     },
     donation: function (data, callback) {
-        return db.query("'CALL donation(?,?)'", [data.id, data.amount], callback);
+        return db.query('CALL donation(?,?)', [data.id, data.amount], callback);
     }
-
 };
 
 

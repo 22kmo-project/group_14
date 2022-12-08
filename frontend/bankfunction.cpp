@@ -8,9 +8,6 @@ BankFunction::BankFunction(QObject *parent)
     cardId = 1;
     customerId = 1;
     moneyAmount = 0.0;
-
-
-
 }
 
 BankFunction::~BankFunction()
@@ -53,6 +50,10 @@ void BankFunction::processLogin(QNetworkReply* reply)
 {
     loginToken.clear();
     loginToken = reply->readAll();
+
+    QJsonDocument jsonResponse = QJsonDocument::fromJson(loginToken);
+    int isLocked = jsonResponse["isLocked"].toInt();
+
     qDebug() << loginToken;
 
     int test = QString::compare(loginToken, "false");
@@ -75,12 +76,36 @@ void BankFunction::processLogin(QNetworkReply* reply)
             }
             else
             {
-                emit loginResult(1);//Login successful. Emit signal to mainWindow
+                //emit loginResult(1);//Login successful. Emit signal to mainWindow
+
+                if(isLocked == 1)
+                {
+                    emit loginResult(4);
+                }
+                else
+                {
+                    // Eli login onnistui ja haetaan sitten korttiin liitettyjen tilien lukumäärä:
+                    getNumberOfAccounts();
+                }
             }
         }
     }
     networkAccessManager->deleteLater();
     reply->deleteLater();
+}
+
+void BankFunction::getNumberOfAccounts()
+{
+    //QString cardId = "123456"; // Tähän pitäisi saada tuotua kortin ID tuolta kirjautumisesta
+
+    QString site_url = DatabaseURL::getBaseURL() + "/card/info/" + cardId;
+    QNetworkRequest request((site_url));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    request.setRawHeader(QByteArray("Authorization"), "bearer " + (loginToken));
+
+    networkAccessManager = new QNetworkAccessManager(this);
+    connect(networkAccessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(numAccountSlot(QNetworkReply*)));
+    reply = networkAccessManager->get(request);
 }
 
 
@@ -364,4 +389,27 @@ void BankFunction::setAccountType(int type)
 {
     accountType = type;
     getAccountInfo();
+}
+
+void BankFunction::numAccountSlot(QNetworkReply* reply)
+{
+    QByteArray response_data = reply->readAll();
+    QJsonDocument jsonResponse = QJsonDocument::fromJson(response_data);
+
+    int numberOfAccounts = jsonResponse[0]["number_of_accounts"].toInt();
+    qDebug() << "Number of accounts:" << numberOfAccounts;
+
+    // Korttiin liitettyjen tilien lukumäärä selvillä ja osataan päättää mihin näkymään siirrytään..
+
+    if (numberOfAccounts == 1) // If user has only one account associated with their card, it means they have only debit account and we can skip chooseAccount window
+    {
+        emit changeWidget(2);
+    }
+    else
+    {
+        emit changeWidget(1);
+    }
+
+    reply->deleteLater();
+    networkAccessManager->deleteLater();
 }
