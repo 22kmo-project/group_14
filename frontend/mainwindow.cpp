@@ -97,14 +97,11 @@ void MainWindow::loginClicked()
     //bankFunction->requestLogin(idCard, password);
 }
 
-void MainWindow::loginSlot(QNetworkReply *reply)
-{
-    
-}
-
 void MainWindow::moveToIndex(int index)
 {
     ui->stackedWidget->setCurrentIndex(index);
+    time = 0;
+    ptimer->start(1000);
 }
 
 void MainWindow::loginResult(int result)
