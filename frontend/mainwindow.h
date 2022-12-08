@@ -36,6 +36,7 @@ private slots:
     void loginSlot(QNetworkReply* reply);
     void moveToIndex(int index);
     void loginResult(int result);
+    void timeComparison();
 
 private:
     Ui::MainWindow *ui;
@@ -44,6 +45,8 @@ private:
     QNetworkReply *reply;
     QByteArray responseData;
     QString idCard;
+    QTimer* ptimer;
+    int time;
     
     ChooseAccount chooseAccount;
     UserMenu userMenu;

@@ -61,8 +61,9 @@ private slots:
     void processAccountInfo(QNetworkReply* reply);
     void setAccountType(int type);
 
-private:
+    void numAccountSlot(QNetworkReply* reply);
 
+private:
     QNetworkAccessManager* networkAccessManager;
 
     int accountId;
@@ -73,15 +74,13 @@ private:
     int customerId;
     QString customerName;
 
-    QVector<TransactionData*> transactions;        
-
+    QVector<TransactionData*> transactions;
     QString url;
-
     QNetworkReply* reply;
-
     QByteArray responseData;
-
     QByteArray loginToken;
+
+    void getNumberOfAccounts();
 
 signals:
     //void changeWidget(int);
@@ -91,6 +90,7 @@ signals:
     void donationResult(int);
     void setCustomerName(QString name);
     void depositResult(int);
+    void changeWidget(int);
 
 };
 
