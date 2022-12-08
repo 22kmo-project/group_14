@@ -239,22 +239,22 @@ background-color: red;
    </row>
    <column>
     <property name="text">
-     <string>Transaction</string>
+     <string>ID</string>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>Type</string>
+     <string>Tapahtuma</string>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>Amount</string>
+     <string>Määrä</string>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>Date</string>
+     <string>Aika</string>
     </property>
    </column>
   </widget>

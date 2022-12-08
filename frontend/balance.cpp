@@ -8,8 +8,8 @@ Balance::Balance(QWidget *parent) :
     ui->setupUi(this);
     connect(ui->cancelButton, &QPushButton::clicked, this, &Balance::cancelButton);
 
-    ui->tableWidget->setColumnWidth(0,150);
-    ui->tableWidget->setColumnWidth(1,100);
+    ui->tableWidget->setColumnWidth(0,100);
+    ui->tableWidget->setColumnWidth(1,150);
     ui->tableWidget->setColumnWidth(2,100);
     ui->tableWidget->setColumnWidth(3,150);
 
@@ -50,7 +50,7 @@ void Balance::updateTransactions()
     int r = 0;
     for (int i = startIndex; i < temp.size() && i < max; i++)
     {
-        ui->tableWidget->setItem(r, 0, new QTableWidgetItem(temp[i]->eventType));
+        ui->tableWidget->setItem(r, 0, new QTableWidgetItem(temp[i]->transactionID));
         ui->tableWidget->setItem(r, 1, new QTableWidgetItem(temp[i]->eventType));
         ui->tableWidget->setItem(r, 2, new QTableWidgetItem(temp[i]->amount));
         ui->tableWidget->setItem(r, 3, new QTableWidgetItem(temp[i]->dateTime));
