@@ -24,11 +24,11 @@ public:
 private:
     Ui::Deposit *ui;
     QNetworkAccessManager *depositManager;
-    QNetworkReply *depositReply;
+    QNetworkReply *reply;
     QByteArray responseData;
 
 private slots:
-    void depositSlot(QNetworkReply* reply);
+    void depositSlot(int result);
     void buttonBack();
     void buttonBills();
     void buttonCoins();
@@ -43,6 +43,7 @@ private slots:
 
 signals:
     void changeWidget(int);
+    void makeDeposit();
 };
 
 #endif // DEPOSIT_H
