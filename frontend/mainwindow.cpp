@@ -59,8 +59,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->stackedWidget->insertWidget(6, &accountTransaction);
     ui->stackedWidget->insertWidget(7, &deposit);
 
-    QPixmap bkgnd("img/background.png"); // These 5 lines sets background image to the window
-   // QPixmap bkgnd("../img/background.png"); // These 5 lines sets background image to the window
+    QPixmap bkgnd("../img/background.png"); // These 5 lines sets background image to the window
     bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Window, bkgnd);
