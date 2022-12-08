@@ -8,7 +8,7 @@
 #include <QJsonObject>
 
 namespace Ui {
-class UserMenu;
+    class UserMenu;
 }
 
 class UserMenu : public QWidget
@@ -16,7 +16,7 @@ class UserMenu : public QWidget
     Q_OBJECT
 
 public:
-    explicit UserMenu(QWidget *parent = nullptr);
+    explicit UserMenu(QWidget* parent = nullptr);
     ~UserMenu();
 
 private slots:
@@ -28,17 +28,20 @@ private slots:
     void button_donation();
     void button_cash();
     void button_deposit();
+    void setCustomerName(QString name);
 
 private:
-    Ui::UserMenu *ui;
+    Ui::UserMenu* ui;
     int accountType;
     void getAccountInfo();
-    QNetworkAccessManager *getAccountInfoManager;
-    QNetworkReply *getAccountInfoReply;
+    QNetworkAccessManager* getAccountInfoManager;
+    QNetworkReply* getAccountInfoReply;
     QByteArray responseData;
 
 signals:
     void changeWidget(int);
+    void updateTransactions(int);
 };
 
 #endif // USERMENU_H
+

@@ -23,13 +23,39 @@ Balance::Balance(QWidget *parent) :
     ui->tableWidget->setItem(0,2,amount);
     ui->tableWidget->setItem(0,3,date);
 
-    //ui->textBalance->setText("Balance: 512.30 €");
-    //ui->textCreditLimit->setText("Credit limit: 1000 €");
+    //ui->tableWidget->setStyleSheet("background-color: transparent");
+
+    ui->label_2->setText("2000,00 €");
+
+    rows = ui->tableWidget->rowCount();
+    currentPage = 1;
 }
 
 Balance::~Balance()
 {
     delete ui;
+}
+
+void Balance::setBankFunction(BankFunction* bankFunction)
+{
+    this->bankFunction = bankFunction;
+}
+
+void Balance::updateTransactions()
+{
+    ui->tableWidget->clearContents();
+    QVector<TransactionData*> temp = bankFunction->GetTransactions();
+    int startIndex = (currentPage - 1) * rows;
+    int max = (currentPage - 1) * rows + rows;
+    int r = 0;
+    for (int i = startIndex; i < temp.size() && i < max; i++)
+    {
+        ui->tableWidget->setItem(r, 0, new QTableWidgetItem(temp[i]->eventType));
+        ui->tableWidget->setItem(r, 1, new QTableWidgetItem(temp[i]->eventType));
+        ui->tableWidget->setItem(r, 2, new QTableWidgetItem(temp[i]->amount));
+        ui->tableWidget->setItem(r, 3, new QTableWidgetItem(temp[i]->dateTime));
+        r += 1;
+    }
 }
 
 void Balance::cancelButton()

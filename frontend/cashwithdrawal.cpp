@@ -2,7 +2,7 @@
 #include "ui_cashwithdrawal.h"
 
 
-CashWithdrawal::CashWithdrawal(QWidget *parent) :
+CashWithdrawal::CashWithdrawal(QWidget* parent) :
     QWidget(parent),
     ui(new Ui::CashWithdrawal)
 {
@@ -24,55 +24,27 @@ CashWithdrawal::~CashWithdrawal()
 
 void CashWithdrawal::withdraw()
 {
-    QString id_account = "1"; // Tähän pitäisi saada tuotua valitun tilin id
-    QString amount = QString::number(selectedAmount); // Ja tähän valittu nostosumma
-
-    QJsonObject jsonObj;
-    jsonObj.insert("id", id_account);
-    jsonObj.insert("amount", amount);
-
-    QString site_url=DatabaseURL::getBaseURL()+"/account/withdraw";
-    QNetworkRequest request((site_url));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    withdrawManager = new QNetworkAccessManager(this);
-    connect(withdrawManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(withdrawSlot(QNetworkReply*)));
-    reply = withdrawManager->post(request, QJsonDocument(jsonObj).toJson());
+    emit withdrawSignal();
 }
 
-void CashWithdrawal::withdrawSlot(QNetworkReply *reply)
+void CashWithdrawal::withdrawSlot(int result, double balance)
 {
-    responseData=reply->readAll();
-    QJsonDocument jsonResponseData = QJsonDocument::fromJson(responseData);
-
-    bool success = jsonResponseData[0]["success"].toInt(); // success = 1 if transaction was made and 0 if it failed
-    double balance = jsonResponseData[0]["balance"].toDouble();
-    double creditLimit = jsonResponseData[0]["credit_limit"].toDouble();
-
-    if(responseData.length() == 0)
+    switch (result)
     {
+    case 0:
+        ui->stackedWidget->setCurrentIndex(2);
+        ui->label_4->setText("Sinulla ei ole tarpeeksi rahaa.\n\n Nykyinen saldosi on: " + QString::number(balance) + " €");
+        break;
+    case 1:
+        ui->stackedWidget->setCurrentIndex(0);
+        ui->label_3->setText("Tapahtuma on suoritettu.\n\n Ota rahat ja kuitti!\n\n Nykyinen saldosi on " + QString::number(balance) + " €");
+        break;
+    case 2:
         qDebug() << "Server not responding";
-    }
-    else
-    {
-        if(QString::compare(responseData, "-4078") == 0)
-        {
-            qDebug() << "Error in database connection";
-        }
-        else
-        {
-            if(success == 0)
-            {
-                ui->stackedWidget->setCurrentIndex(2);
-                //ui->label_4->setText("Sorry. You have insufficient funds available.\n\n Your current balance: " + QString::number(balance) + " €");
-                ui->label_4->setText("Sinulla ei ole tarpeeksi rahaa.\n\n Nykyinen saldosi on: " + QString::number(balance) + " €");
-            }
-            else
-            {
-                ui->stackedWidget->setCurrentIndex(0);
-                //ui->label_3->setText("Your transaction is complete.\n\n Please take your cash and receipt!\n\n Your remaining balance is " + QString::number(balance) + " €");
-                ui->label_3->setText("Tapahtuma on suoritettu.\n\n Ota rahat ja kuitti!\n\n Nykyinen saldosi on " + QString::number(balance) + " €");
-            }
-        }
+        break;
+    case 3:
+        qDebug() << "Error in database connection";
+        break;
     }
 }
 
@@ -95,26 +67,31 @@ void CashWithdrawal::on_button_accept_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
     selectedAmount = (ui->lineEdit->text()).toInt();
+    emit setAmount(selectedAmount);
 }
 
 void CashWithdrawal::button_20()
 {
     selectedAmount = 20;
+    emit setAmount(selectedAmount);
 }
 
 void CashWithdrawal::button_40()
 {
     selectedAmount = 40;
+    emit setAmount(selectedAmount);
 }
 
 void CashWithdrawal::button_50()
 {
     selectedAmount = 50;
+    emit setAmount(selectedAmount);
 }
 
 void CashWithdrawal::button_100()
 {
     selectedAmount = 100;
+    emit setAmount(selectedAmount);
 }
 
 

@@ -28,8 +28,8 @@ void Deposit::buttonConfirm()
 {
     ui->stackedWidget->setCurrentIndex(3);
 
-    QString id_account = "1";
-    QString amount = QString::number(static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/200))); // Random float number between 0.0 and 200
+    /*QString id_account = "1";
+    QString amount = "500";
 
     QJsonObject jsonObj;
     jsonObj.insert("id", id_account);
@@ -40,12 +40,30 @@ void Deposit::buttonConfirm()
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     depositManager = new QNetworkAccessManager(this);
     connect(depositManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(depositSlot(QNetworkReply*)));
-    depositReply = depositManager->post(request, QJsonDocument(jsonObj).toJson());
+    reply = depositManager->post(request, QJsonDocument(jsonObj).toJson());*/
+    emit makeDeposit();
+
 }
 
-void Deposit::depositSlot(QNetworkReply *depositReply)
+void Deposit::depositSlot(int result)
 {
-    responseData=depositReply->readAll();
+    switch (result)
+    {
+    case 0:
+        qDebug() << "Sorry. Something went wrong! Deposit failed.";
+        break;
+    case 1:
+        qDebug() << "Deposit successful!";
+        break;
+    case 2:
+        qDebug() << "Server not responding";
+        break;
+    case 3:
+        qDebug() << "Error in database connection";
+        break;
+
+    }
+    responseData=reply->readAll();
     int test = QString::compare(responseData, "false");
 
     if(responseData.length() == 0)
@@ -62,12 +80,12 @@ void Deposit::depositSlot(QNetworkReply *depositReply)
         {
             if(test == 0)
             {
-                qDebug() << "Sorry. Something went wrong!";
+                qDebug() << "Sorry. You have insufficient funds to complete this transaction.";
 
             }
             else
             {
-                qDebug() << "Deposit done!";
+                qDebug() << "Your transaction is complete. Your remaining balance is X €. Please take your cash and receipt.";
             }
         }
     }

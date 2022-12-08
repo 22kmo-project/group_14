@@ -2,7 +2,7 @@
 #include "ui_usermenu.h"
 #include <QDebug>
 
-UserMenu::UserMenu(QWidget *parent) :
+UserMenu::UserMenu(QWidget* parent) :
     QWidget(parent),
     ui(new Ui::UserMenu)
 {
@@ -30,23 +30,23 @@ void UserMenu::switchedToUserMenu(int type)
 
 void UserMenu::getAccountInfo()
 {
-    QString cardId = "123456"; // TÃ¤hÃ¤n taas pitÃ¤isi saada tuotua kÃ¤ytÃ¶ssÃ¤ olevan kortin ID
-    QString site_url=DatabaseURL::getBaseURL()+"/account/getinfo/"+cardId+"/"+QString::number(accountType);
+    QString cardId = "123456"; // Tähän taas pitäisi saada tuotua käytössä olevan kortin ID
+    QString site_url = DatabaseURL::getBaseURL() + "/account/getinfo/" + cardId + "/" + QString::number(accountType);
     QNetworkRequest request((site_url));
     //WEBTOKEN ALKU
     //request.setRawHeader(QByteArray("Authorization"),(webToken));
     //WEBTOKEN LOPPU
     getAccountInfoManager = new QNetworkAccessManager(this);
-    connect(getAccountInfoManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(getAccountInfoSlot(QNetworkReply*)));
+    connect(getAccountInfoManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(getAccountInfoSlot(QNetworkReply*)));
     getAccountInfoReply = getAccountInfoManager->get(request);
 }
 
-void UserMenu::getAccountInfoSlot(QNetworkReply *getAccountInfoReply)
+void UserMenu::getAccountInfoSlot(QNetworkReply* getAccountInfoReply)
 {
-    QByteArray response_data=getAccountInfoReply->readAll();
+    QByteArray response_data = getAccountInfoReply->readAll();
     QJsonDocument jsonResponse = QJsonDocument::fromJson(response_data);
 
-    // Saadaan kÃ¤yttÃ¤jÃ¤n nimet, saldo ja credit limitti
+    // Saadaan käyttäjän nimet, saldo ja credit limitti
     QString customerName = jsonResponse["name"].toString();
     double balance = jsonResponse["balance"].toDouble();
     double creditLimit = jsonResponse["credit_limit"].toDouble();
@@ -62,17 +62,19 @@ void UserMenu::getAccountInfoSlot(QNetworkReply *getAccountInfoReply)
 void UserMenu::button_logout()
 {
     emit changeWidget(0);
-    // joku emit homma tÃ¤hÃ¤n joka nollaisi login sivulla input fieldit
+    // joku emit homma tähän joka nollaisi login sivulla input fieldit
 }
 
 void UserMenu::button_balance()
 {
     emit changeWidget(5);
+    emit updateTransactions(1);
 }
 
 void UserMenu::button_transactions()
 {
     emit changeWidget(6);
+    emit updateTransactions(1);
 }
 
 void UserMenu::button_donation()
@@ -88,4 +90,9 @@ void UserMenu::button_cash()
 void UserMenu::button_deposit()
 {
     emit changeWidget(7);
+}
+
+void UserMenu::setCustomerName(QString name)
+{
+    ui->textCustomerName->setText(name);
 }

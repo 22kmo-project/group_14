@@ -1,7 +1,7 @@
 #include "charity.h"
 #include "ui_charity.h"
 
-charity::charity(QWidget *parent) :
+charity::charity(QWidget* parent) :
     QWidget(parent),
     ui(new Ui::charity)
 {
@@ -21,64 +21,32 @@ charity::~charity()
 
 void charity::donation()
 {
-    QString id_account = "1"; // Tähän pitäisi saada tuotua valitun tilin id
-    QString amount = QString::number(selectedAmount); // Ja tähän valittu nostosumma
-
-
-    QJsonObject jsonObj;
-    jsonObj.insert("id", id_account);
-    jsonObj.insert("amount", amount);
-
-
-    QString site_url=DatabaseURL::getBaseURL()+"/account/charity";
-    QNetworkRequest request((site_url));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    charityManager = new QNetworkAccessManager(this);
-    connect(charityManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(donationSlot(QNetworkReply*)));
-    reply = charityManager->post(request, QJsonDocument(jsonObj).toJson());
+    selectedAmount = (ui->lineEdit_chooseamount->text()).toInt();
+    emit setAmount(selectedAmount);
+    emit makeDonation();
 }
 
-void charity::donationSlot(QNetworkReply *reply)
+void charity::donationSlot(int result)
 
 {
-    responseData=reply->readAll();
-    QJsonDocument jsonResponseData = QJsonDocument::fromJson(responseData);
-    int test = QString::compare(responseData, "false");
-
-    bool success = jsonResponseData[0]["success"].toInt(); // success = 1 if transaction was made and 0 if it failed
-    double balance = jsonResponseData[0]["balance"].toDouble();
-    double creditLimit = jsonResponseData[0]["credit_limit"].toDouble();
-
-    if(responseData.length() == 0)
+    switch (result)
     {
+    case 0:
+        qDebug() << "Error! Donation failed!.";
+        ui->label_2->setText("Error! Lahjoitus ei onnistunut.\n\n");
+        ui->stackedWidget->setCurrentIndex(2);
+        break;
+    case 1:
+        qDebug() << "Donation completed successfully.";
+        ui->label->setText("Lahjoitus suoritettu. \n\n");
+        ui->stackedWidget->setCurrentIndex(1);
+        break;
+    case 2:
         qDebug() << "Server not responding";
-    }
-    else
-    {
-        if(QString::compare(responseData, "-4078") == 0)
-        {
-            qDebug() << "Error in database connection";
-        }
-        else
-        {
-            if(test == 0)
-            {
-                qDebug() << "Error! Donation failed!.";
-                ui->label_2->setText("Error! Lahjoitus ei onnistunut.\n\n Nykyinen saldosi on " + QString::number(balance) + " €");
-                ui->stackedWidget->setCurrentIndex(2);
-
-                // Vaihdetaan sitten stacked widgettiä cashWithdrawalin sisällä sivulle joka
-                // näyttää virheilmoituksen sekä napin jolla voi palata näkymään jossa valitaan nostosumma
-            }
-            else
-            {
-                qDebug() << "Donation completed successfully.";
-                ui->label->setText("Lahjoitus suoritettu. \n\n Nykyinen saldosi on " + QString::number(balance) + " €");
-                //emit changeWidget(2);
-                ui->stackedWidget->setCurrentIndex(1);
-                // Vaihdetaan näkymään jossa eri viesti sekä nappula (tai vaikka 5s automaattinen siirto) päävalikkoon(?)
-            }
-        }
+        break;
+    case 3:
+        qDebug() << "Error in database connection";
+        break;
     }
 }
 
@@ -89,15 +57,18 @@ void charity::button_cancel()
 
 void charity::on_button_kohde1_clicked()
 {
-    selectedAmount = (ui->lineEdit_chooseamount->text()).toInt();
+    //selectedAmount = (ui->lineEdit_chooseamount->text()).toInt();
+    emit setAmount(selectedAmount);
 }
 
 void charity::on_button_kohde2_clicked()
 {
-    selectedAmount = (ui->lineEdit_chooseamount->text()).toInt();
+    //selectedAmount = (ui->lineEdit_chooseamount->text()).toInt();
+    emit setAmount(selectedAmount);
 }
 
 void charity::on_button_kohde3_clicked()
 {
-    selectedAmount = (ui->lineEdit_chooseamount->text()).toInt();
+    //selectedAmount = (ui->lineEdit_chooseamount->text()).toInt();
+    emit setAmount(selectedAmount);
 }

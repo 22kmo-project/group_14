@@ -5,7 +5,6 @@
 #include <QPushButton>
 #include <QMainWindow>
 #include <QString>
-#include <QLineEdit>
 #include <QtNetwork>
 #include <QJsonObject>
 #include "databaseurl.h"
@@ -30,7 +29,7 @@ private:
     int selectedAmount;
 
 private slots:
-    void withdrawSlot(QNetworkReply* reply);
+    void withdrawSlot(int result, double balance);
     void withdraw();
     void button_back();
     void button_otheramount();
@@ -44,7 +43,8 @@ private slots:
 
 signals:
     void changeWidget(int);
-
+    void setAmount(int);
+    void withdrawSignal();
 };
 
 #endif // CASHWITHDRAWAL_H

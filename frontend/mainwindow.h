@@ -13,12 +13,13 @@
 #include <balance.h>
 #include <accounttransactions.h>
 #include <deposit.h>
-#include <QTimer>
-
+#include "bankfunction.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
+class BankFunction;
 
 class MainWindow : public QMainWindow
 {
@@ -28,25 +29,22 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    BankFunction* getBankFunction();
+
 private slots:
     void loginClicked();
     void loginSlot(QNetworkReply* reply);
-    void testSlot(QNetworkReply *reply);
-    void moveToIndex(int);
-    void timeComparison();
+    void moveToIndex(int index);
+    void loginResult(int result);
 
 private:
-    void getNumberOfAccounts();
     Ui::MainWindow *ui;
     QPushButton* loginButton;
     QNetworkAccessManager *loginManager;
-    QNetworkAccessManager *testManager;
     QNetworkReply *reply;
     QByteArray responseData;
     QString idCard;
-    QTimer *ptimer;
-    int time;
-
+    
     ChooseAccount chooseAccount;
     UserMenu userMenu;
     CashWithdrawal cashWithdrawal;
@@ -54,5 +52,10 @@ private:
     Balance balance;
     accountTransactions accountTransaction;
     Deposit deposit;
+    
+    BankFunction* bankFunction;
+
+signals:
+    void login(QString, QString);
 };
 #endif // MAINWINDOW_H
