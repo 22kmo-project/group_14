@@ -59,7 +59,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->stackedWidget->insertWidget(6, &accountTransaction);
     ui->stackedWidget->insertWidget(7, &deposit);
 
-    //QPixmap bkgnd("img/background.png"); // These 5 lines sets background image to the window
     QPixmap bkgnd("../img/background.png"); // These 5 lines sets background image to the window
     bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
@@ -136,9 +135,9 @@ void MainWindow::loginResult(int result)
 
 void MainWindow::timeComparison()
 {
-    qDebug() << "lasketaan";
+    //qDebug() << "lasketaan";
     time++; //lasketaan aikaa
-    qDebug() << time;
+    //qDebug() << time;
 
     if (ui->stackedWidget->currentIndex() == 1 && time > 10) {
         ui->stackedWidget->setCurrentIndex(0);

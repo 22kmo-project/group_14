@@ -58,6 +58,8 @@ void BankFunction::processLogin(QNetworkReply* reply)
 
     int test = QString::compare(loginToken, "false");
 
+    bool loginSuccessful = false;
+
     if (loginToken.length() == 0) //No reply from server
     {
         emit loginResult(2);
@@ -85,26 +87,31 @@ void BankFunction::processLogin(QNetworkReply* reply)
                 else
                 {
                     // Eli login onnistui ja haetaan sitten korttiin liitettyjen tilien lukumäärä:
-                    getNumberOfAccounts();
+                    loginSuccessful = true;
                 }
             }
         }
     }
     networkAccessManager->deleteLater();
     reply->deleteLater();
+    if (loginSuccessful)
+    {
+        getNumberOfAccounts();
+    }
 }
 
 void BankFunction::getNumberOfAccounts()
 {
-    //QString cardId = "123456"; // Tähän pitäisi saada tuotua kortin ID tuolta kirjautumisesta
+    //accountManager = new QNetworkAccessManager(this);
+    networkAccessManager = new QNetworkAccessManager(this);
 
-    QString site_url = DatabaseURL::getBaseURL() + "/card/info/" + cardId;
+    QString site_url = DatabaseURL::getBaseURL() + "/card/info/" + QString::number(cardId);
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     request.setRawHeader(QByteArray("Authorization"), "bearer " + (loginToken));
 
-    networkAccessManager = new QNetworkAccessManager(this);
     connect(networkAccessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(numAccountSlot(QNetworkReply*)));
+    //connect(accountManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(numAccountSlot(QNetworkReply*)));
     reply = networkAccessManager->get(request);
 }
 
@@ -279,7 +286,11 @@ void BankFunction::processTransactions()
 
     QJsonArray jsonArray = jsonResponse.array();
 
-
+    for (int x = transactions.size()-1; x >= 0; x--)
+    {
+        delete transactions.at(x);
+    }
+    transactions.clear();
     for (int i = 0; i < jsonArray.size(); i++)
     {
         QJsonObject jsonObj = jsonArray.at(i).toObject();
@@ -379,7 +390,7 @@ void BankFunction::processAccountInfo(QNetworkReply* reply)
     double creditLimit = jsonResponse["credit_limit"].toDouble();
     int accountId = jsonResponse["id_account"].toInt();
     setAccountId(accountId);
-    qDebug() << "Name:" << customerName << "Balance:" << balance << "Credit limit:" << creditLimit << "Account ID:" << accountId;
+    qDebug() << "Testi:" + customerName + " Balance:" + QString::number(balance) + " Credit limit:" + QString::number(creditLimit) + " Account ID:" + QString::number(accountId);
     emit setCustomerName(customerName);
     networkAccessManager->deleteLater();
     reply->deleteLater();
@@ -399,17 +410,19 @@ void BankFunction::numAccountSlot(QNetworkReply* reply)
     int numberOfAccounts = jsonResponse[0]["number_of_accounts"].toInt();
     qDebug() << "Number of accounts:" << numberOfAccounts;
 
+    reply->deleteLater();
+    networkAccessManager->deleteLater();
+
     // Korttiin liitettyjen tilien lukumäärä selvillä ja osataan päättää mihin näkymään siirrytään..
 
     if (numberOfAccounts == 1) // If user has only one account associated with their card, it means they have only debit account and we can skip chooseAccount window
     {
         emit changeWidget(2);
+        accountType = 0;
+        getAccountInfo();
     }
     else
     {
         emit changeWidget(1);
     }
-
-    reply->deleteLater();
-    networkAccessManager->deleteLater();
 }

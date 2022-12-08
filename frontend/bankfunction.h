@@ -77,6 +77,8 @@ private:
     QVector<TransactionData*> transactions;
     QString url;
     QNetworkReply* reply;
+    QNetworkReply* accountReply;
+    QNetworkAccessManager* accountManager;
     QByteArray responseData;
     QByteArray loginToken;
 

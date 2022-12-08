@@ -33,7 +33,7 @@ public:
 
 private slots:
     void loginClicked();
-    void loginSlot(QNetworkReply* reply);
+    //void loginSlot(QNetworkReply* reply);
     void moveToIndex(int index);
     void loginResult(int result);
     void timeComparison();
