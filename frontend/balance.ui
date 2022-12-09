@@ -136,7 +136,7 @@ background-color: red;
     </property>
    </column>
   </widget>
-  <widget class="QLabel" name="testCustomerName">
+  <widget class="QLabel" name="customerNameLabel">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -157,7 +157,7 @@ font-weight:bold;</string>
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="balanceLabel">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -174,7 +174,7 @@ color:white;</string>
     <string>Balance: 511.25 €</string>
    </property>
   </widget>
-  <widget class="QLabel" name="textCreditLimit">
+  <widget class="QLabel" name="creditLimitLabel">
    <property name="geometry">
     <rect>
      <x>270</x>
