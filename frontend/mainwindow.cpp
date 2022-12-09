@@ -111,7 +111,7 @@ void MainWindow::loginResult(int result)
             ui->idCardLine->clear();
             ui->passwordLine->clear();
             ui->infoLabel->setVisible(1);
-            ui->infoLabel->setText("Card number and PIN code don't match");
+            ui->infoLabel->setText("Kortin numero ja tunnusluku eivät täsmää.");
             break;
         case 1: //Login was successful
             ui->idCardLine->clear();
@@ -124,7 +124,7 @@ void MainWindow::loginResult(int result)
             break;
         case 3: //Error in database connection returned
             ui->infoLabel->setVisible(1);
-            ui->infoLabel->setText("Error in database connection");
+            ui->infoLabel->setText("Virhe tietokantayhteydessä.");
             break;
         case 4:
             ui->infoLabel->setVisible(1);

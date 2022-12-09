@@ -56,6 +56,38 @@
       <bool>true</bool>
      </property>
     </widget>
+    <widget class="QPushButton" name="buttonBack2">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>520</y>
+       <width>181</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+background-color: rgb(130, 130, 130);
+background-image: url(../img/icon_back.png);
+background-repeat:no-repeat;
+background-position:left middle;
+color: rgb(255, 255, 255);
+border-radius:15px;
+padding:5 5px;
+font-size:20px;
+}
+QPushButton:hover {
+background-color: rgb(120, 120, 120);
+color: rgb(255, 255, 255);
+}</string>
+     </property>
+     <property name="text">
+      <string>Takaisin</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="page">
     <widget class="QPushButton" name="button_20">
@@ -308,9 +340,9 @@ color:white;
     <widget class="QPushButton" name="button_confirm">
      <property name="geometry">
       <rect>
-       <x>590</x>
+       <x>570</x>
        <y>520</y>
-       <width>181</width>
+       <width>201</width>
        <height>51</height>
       </rect>
      </property>
@@ -339,7 +371,7 @@ color: rgb(245, 245, 245);
 }</string>
      </property>
      <property name="text">
-      <string>Hyväksy</string>
+      <string>Nosta summa</string>
      </property>
     </widget>
    </widget>
@@ -492,9 +524,9 @@ border-radius: 25px;</string>
     <widget class="QPushButton" name="button_accept">
      <property name="geometry">
       <rect>
-       <x>590</x>
+       <x>570</x>
        <y>520</y>
-       <width>181</width>
+       <width>201</width>
        <height>51</height>
       </rect>
      </property>
@@ -524,7 +556,7 @@ color: rgb(245, 245, 245);
 </string>
      </property>
      <property name="text">
-      <string>Hyväksy</string>
+      <string>Nosta summa</string>
      </property>
     </widget>
     <widget class="QPushButton" name="button_back_2">

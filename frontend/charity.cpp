@@ -9,6 +9,8 @@ charity::charity(QWidget* parent) :
     ui->stackedWidget->setCurrentIndex(0);
     connect(ui->button_confirm, &QPushButton::clicked, this, &charity::donation);
     connect(ui->button_cancel, &QPushButton::clicked, this, &charity::button_cancel);
+    connect(ui->buttonBack2, &QPushButton::clicked, this, &charity::button_cancel);
+    connect(ui->buttonBack3, &QPushButton::clicked, this, &charity::button_cancel);
     connect(ui->button_kohde1, &QPushButton::clicked, this, &charity::on_button_kohde1_clicked);
     connect(ui->button_kohde2, &QPushButton::clicked, this, &charity::on_button_kohde2_clicked);
     connect(ui->button_kohde3, &QPushButton::clicked, this, &charity::on_button_kohde3_clicked);
@@ -32,13 +34,13 @@ void charity::donationSlot(int result)
     switch (result)
     {
     case 0:
-        qDebug() << "Error! Donation failed!.";
-        ui->label_2->setText("Error! Lahjoitus ei onnistunut.\n\n");
+        qDebug() << "Virhe. Tilisi kate ei riitä.";
+        ui->label_2->setText("Virhe. Tilisi kate ei riitä.\n\n");
         ui->stackedWidget->setCurrentIndex(2);
         break;
     case 1:
-        qDebug() << "Donation completed successfully.";
-        ui->label->setText("Lahjoitus suoritettu. \n\n");
+        qDebug() << "Lahjoitus suoritettu.";
+        ui->label->setText("Lahjoitus suoritettu. \n\n Kiitos kun tuit järjestön\n" + charityName + "\ntärkeää työtä!");
         ui->stackedWidget->setCurrentIndex(1);
         break;
     case 2:
@@ -53,22 +55,21 @@ void charity::donationSlot(int result)
 void charity::button_cancel()
 {
     emit changeWidget(2);
+    ui->stackedWidget->setCurrentIndex(0); // resets donation windows stacked widget index after returning from "thank you" screen
+    ui->lineEdit_chooseamount->clear(); // and also clears input field
 }
 
 void charity::on_button_kohde1_clicked()
 {
-    //selectedAmount = (ui->lineEdit_chooseamount->text()).toInt();
-    emit setAmount(selectedAmount);
+    charityName = "WWF";
 }
 
 void charity::on_button_kohde2_clicked()
 {
-    //selectedAmount = (ui->lineEdit_chooseamount->text()).toInt();
-    emit setAmount(selectedAmount);
+    charityName = "Unicef";
 }
 
 void charity::on_button_kohde3_clicked()
 {
-    //selectedAmount = (ui->lineEdit_chooseamount->text()).toInt();
-    emit setAmount(selectedAmount);
+    charityName = "Suomen Mielenterveys Ry";
 }

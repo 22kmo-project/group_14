@@ -117,22 +117,22 @@ background-color: red;
    </row>
    <column>
     <property name="text">
-     <string>Transaction</string>
+     <string>ID</string>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>Type</string>
+     <string>Tapahtuma</string>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>Amount</string>
+     <string>Määrä</string>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>Date</string>
+     <string>Aika</string>
     </property>
    </column>
   </widget>
@@ -157,7 +157,7 @@ font-weight:bold;</string>
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="textBalance">
+  <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
      <x>50</x>

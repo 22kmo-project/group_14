@@ -61,33 +61,6 @@ void Deposit::depositSlot(int result)
     case 3:
         qDebug() << "Error in database connection";
         break;
-
-    }
-    responseData=reply->readAll();
-    int test = QString::compare(responseData, "false");
-
-    if(responseData.length() == 0)
-    {
-        qDebug() << "Server not responding";
-    }
-    else
-    {
-        if(QString::compare(responseData, "-4078") == 0)
-        {
-            qDebug() << "Error in database connection";
-        }
-        else
-        {
-            if(test == 0)
-            {
-                qDebug() << "Sorry. You have insufficient funds to complete this transaction.";
-
-            }
-            else
-            {
-                qDebug() << "Your transaction is complete. Your remaining balance is X €. Please take your cash and receipt.";
-            }
-        }
     }
 }
 

@@ -13,6 +13,7 @@ SOURCES += \
     accounttransactions.cpp \
     balance.cpp \
     cashwithdrawal.cpp \
+    bankfunction.cpp \
     charity.cpp \
     chooseaccount.cpp \
     databaseurl.cpp \
@@ -25,6 +26,7 @@ HEADERS += \
     accounttransactions.h \
     balance.h \
     cashwithdrawal.h \
+    bankfunction.h \
     charity.h \
     chooseaccount.h \
     databaseurl.h \
