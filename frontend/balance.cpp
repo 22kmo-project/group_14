@@ -23,10 +23,6 @@ Balance::Balance(QWidget *parent) :
     ui->tableWidget->setItem(0,2,amount);
     ui->tableWidget->setItem(0,3,date);
 
-    //ui->tableWidget->setStyleSheet("background-color: transparent");
-
-    ui->label_2->setText("2000,00 €");
-
     rows = ui->tableWidget->rowCount();
     currentPage = 1;
 }
@@ -43,11 +39,24 @@ void Balance::setBankFunction(BankFunction* bankFunction)
 
 void Balance::updateTransactions()
 {
+
+    ui->balanceLabel->setText("Saldo: " + QString::number(bankFunction->getBalance())+ "€");
+    if (bankFunction->getCreditLimit() > 0)
+    {
+        ui->creditLimitLabel->setText("Luottoraja: " + QString::number(bankFunction->getCreditLimit()) + "€");
+    }
+    else
+    {
+        ui->creditLimitLabel->setText("");
+    }
+    ui->customerNameLabel->setText(bankFunction->getCustomerName());
+
     ui->tableWidget->clearContents();
     QVector<TransactionData*> temp = bankFunction->GetTransactions();
     int startIndex = (currentPage - 1) * rows;
     int max = (currentPage - 1) * rows + rows;
     int r = 0;
+
     for (int i = startIndex; i < temp.size() && i < max; i++)
     {
         ui->tableWidget->setItem(r, 0, new QTableWidgetItem(temp[i]->transactionID));

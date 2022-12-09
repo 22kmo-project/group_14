@@ -36,6 +36,10 @@ public:
 
     void logOut();
 
+    double getBalance();
+    int getCreditLimit();
+    QString getCustomerName();
+
 private slots:
     void requestLogin(QString id_card, QString pin);
     void processLogin(QNetworkReply* reply);
@@ -70,6 +74,9 @@ private:
     int accountType;
     int cardId;
     double moneyAmount;
+
+    double balance;
+    int creditLimit;
 
     int customerId;
     QString customerName;

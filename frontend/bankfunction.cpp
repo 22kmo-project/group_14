@@ -102,7 +102,6 @@ void BankFunction::processLogin(QNetworkReply* reply)
 
 void BankFunction::getNumberOfAccounts()
 {
-    //accountManager = new QNetworkAccessManager(this);
     networkAccessManager = new QNetworkAccessManager(this);
 
     QString site_url = DatabaseURL::getBaseURL() + "/card/info/" + QString::number(cardId);
@@ -111,7 +110,6 @@ void BankFunction::getNumberOfAccounts()
     request.setRawHeader(QByteArray("Authorization"), "bearer " + (loginToken));
 
     connect(networkAccessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(numAccountSlot(QNetworkReply*)));
-    //connect(accountManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(numAccountSlot(QNetworkReply*)));
     reply = networkAccessManager->get(request);
 }
 
@@ -139,8 +137,8 @@ void BankFunction::processWithdrawal(QNetworkReply* reply)
     QJsonDocument jsonResponseData = QJsonDocument::fromJson(responseData);
 
     bool success = jsonResponseData[0]["success"].toInt(); // success = 1 if transaction was made and 0 if it failed
-    double balance = jsonResponseData[0]["balance"].toDouble();
-    double creditLimit = jsonResponseData[0]["credit_limit"].toDouble();
+    balance = jsonResponseData[0]["balance"].toDouble();
+    creditLimit = jsonResponseData[0]["credit_limit"].toInt();
 
     if (responseData.length() == 0)
     {
@@ -278,6 +276,21 @@ void BankFunction::logOut()
     loginToken.clear();
 }
 
+double BankFunction::getBalance()
+{
+    return balance;
+}
+
+int BankFunction::getCreditLimit()
+{
+    return creditLimit;
+}
+
+QString BankFunction::getCustomerName()
+{
+    return customerName;
+}
+
 void BankFunction::processTransactions()
 {
     QString strReply = (QString)reply->readAll();
@@ -291,7 +304,7 @@ void BankFunction::processTransactions()
         delete transactions.at(x);
     }
     transactions.clear();
-    for (int i = 0; i < jsonArray.size(); i++)
+    for (int i = jsonArray.size()-1; i >= 0; i--)
     {
         QJsonObject jsonObj = jsonArray.at(i).toObject();
 
@@ -385,11 +398,11 @@ void BankFunction::processAccountInfo(QNetworkReply* reply)
     QJsonDocument jsonResponse = QJsonDocument::fromJson(responseData);
 
     // Saadaan käyttäjän nimet, saldo ja credit limitti
-    QString customerName = jsonResponse["name"].toString();
-    double balance = jsonResponse["balance"].toDouble();
-    double creditLimit = jsonResponse["credit_limit"].toDouble();
-    int accountId = jsonResponse["id_account"].toInt();
-    setAccountId(accountId);
+    customerName = jsonResponse["name"].toString();
+    balance = jsonResponse["balance"].toDouble();
+    creditLimit = jsonResponse["credit_limit"].toInt();
+    accountId = jsonResponse["id_account"].toInt();
+    //setAccountId(accountId);
     qDebug() << "Testi:" + customerName + " Balance:" + QString::number(balance) + " Credit limit:" + QString::number(creditLimit) + " Account ID:" + QString::number(accountId);
     emit setCustomerName(customerName);
     networkAccessManager->deleteLater();
