@@ -66,6 +66,7 @@ void accountTransactions::cancelButton()
 
 void accountTransactions::updateTransactions()
 {
+    ui->customerNameLabel->setText(bankFunction->getCustomerName());
     ui->tableWidget->clearContents();
     QVector<TransactionData*> temp = bankFunction->GetTransactions();
     int startIndex = (currentPage - 1) * rows;
