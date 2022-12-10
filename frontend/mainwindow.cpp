@@ -58,8 +58,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->stackedWidget->insertWidget(5, &balance);
     ui->stackedWidget->insertWidget(6, &accountTransaction);
     ui->stackedWidget->insertWidget(7, &deposit);
-
-    QPixmap bkgnd("../img/background.png"); // These 5 lines sets background image to the window
+    QPixmap bkgnd("img/background.png"); // These 5 lines sets background image to the window
+    //QPixmap bkgnd("../img/background.png"); // These 5 lines sets background image to the window
     bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Window, bkgnd);
@@ -116,6 +116,8 @@ void MainWindow::loginResult(int result)
         case 1: //Login was successful
             ui->idCardLine->clear();
             ui->passwordLine->clear();
+            ui->infoLabel->setVisible(0);
+            ui->infoLabel->setText("");
             moveToIndex(1);
             break;
         case 2: //No response from server
@@ -129,6 +131,13 @@ void MainWindow::loginResult(int result)
         case 4:
             ui->infoLabel->setVisible(1);
             ui->infoLabel->setText("Liian monta väärää yritystä. Kortti on lukittu.");
+            break;
+        case 5://Login was successful, only debit account exists.
+            ui->idCardLine->clear();
+            ui->passwordLine->clear();
+            ui->infoLabel->setVisible(0);
+            ui->infoLabel->setText("");
+            moveToIndex(2);
             break;
     }
 }
