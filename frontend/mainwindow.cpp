@@ -41,15 +41,11 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&userMenu, SIGNAL(updateTransactions(int)), bankFunction, SLOT(requestTransactions()));
     connect(bankFunction, SIGNAL(transactionsResult(int)), &accountTransaction, SLOT(updateTransactions()));
 
-    connect(bankFunction, SIGNAL(transactionsResult(int)), &balance, SLOT(updateTransactions()));
-    
-    
+    connect(bankFunction, SIGNAL(transactionsResult(int)), &balance, SLOT(updateTransactions()));    
 
     connect(&chooseAccount, SIGNAL(chooseAccountType(int)), bankFunction, SLOT(setAccountType(int)));
 
     connect(bankFunction, SIGNAL(setCustomerName(QString)), &userMenu, SLOT(setCustomerName(QString)));
-
-
 
     ui->stackedWidget->insertWidget(1, &chooseAccount); // Lisätään tehdyt widgetit, eli yksittäiset pankkiautomaatin näkymät, ja annetaan niille indeksit
     ui->stackedWidget->insertWidget(2, &userMenu);
@@ -58,8 +54,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->stackedWidget->insertWidget(5, &balance);
     ui->stackedWidget->insertWidget(6, &accountTransaction);
     ui->stackedWidget->insertWidget(7, &deposit);
-    QPixmap bkgnd("img/background.png"); // These 5 lines sets background image to the window
-    //QPixmap bkgnd("../img/background.png"); // These 5 lines sets background image to the window
+
+    QPixmap bkgnd("../img/background.png"); // These 5 lines sets background image to the window
     bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Window, bkgnd);
