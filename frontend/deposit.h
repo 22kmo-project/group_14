@@ -37,6 +37,7 @@ signals:
     void changeWidget(int);
     void makeDeposit();
     void resetTime();
+    void setAmount(int);
 };
 
 #endif // DEPOSIT_H

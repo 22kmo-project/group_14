@@ -20,6 +20,8 @@ void Deposit::buttonConfirm()
 {
     ui->stackedWidget->setCurrentIndex(1);
     qDebug() << ui->amountInput->text();
+    int amount = ui->amountInput->text().toInt();
+    emit setAmount(amount);
     emit makeDeposit();
 }
 

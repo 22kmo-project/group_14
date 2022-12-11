@@ -39,8 +39,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&cashWithdrawal, SIGNAL(withdrawSignal()), bankFunction, SLOT(withdrawMoney()));
     connect(bankFunction, SIGNAL(withdrawalResult(int, double)), &cashWithdrawal, SLOT(withdrawSlot(int, double)));
 
-    connect(bankFunction, SIGNAL(depositResult(int)), &deposit, SLOT(depositSlot(int)));
+    connect(&deposit, SIGNAL(setAmount(int)), bankFunction, SLOT(setMoneyAmount(int)));    
     connect(&deposit, SIGNAL(makeDeposit()), bankFunction, SLOT(depositMoney()));
+    connect(bankFunction, SIGNAL(depositResult(int)), &deposit, SLOT(depositSlot(int)));
 
     connect(&charity, SIGNAL(setAmount(int)), bankFunction, SLOT(setMoneyAmount(int)));
     connect(&charity, SIGNAL(makeDonation()), bankFunction, SLOT(makeDonation()));
