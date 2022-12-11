@@ -41,15 +41,11 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&userMenu, SIGNAL(updateTransactions(int)), bankFunction, SLOT(requestTransactions()));
     connect(bankFunction, SIGNAL(transactionsResult(int)), &accountTransaction, SLOT(updateTransactions()));
 
-    connect(bankFunction, SIGNAL(transactionsResult(int)), &balance, SLOT(updateTransactions()));
-    
-    
+    connect(bankFunction, SIGNAL(transactionsResult(int)), &balance, SLOT(updateTransactions()));    
 
     connect(&chooseAccount, SIGNAL(chooseAccountType(int)), bankFunction, SLOT(setAccountType(int)));
 
     connect(bankFunction, SIGNAL(setCustomerName(QString)), &userMenu, SLOT(setCustomerName(QString)));
-
-
 
     ui->stackedWidget->insertWidget(1, &chooseAccount); // Lisätään tehdyt widgetit, eli yksittäiset pankkiautomaatin näkymät, ja annetaan niille indeksit
     ui->stackedWidget->insertWidget(2, &userMenu);
@@ -116,6 +112,8 @@ void MainWindow::loginResult(int result)
         case 1: //Login was successful
             ui->idCardLine->clear();
             ui->passwordLine->clear();
+            ui->infoLabel->setVisible(0);
+            ui->infoLabel->setText("");
             moveToIndex(1);
             break;
         case 2: //No response from server
@@ -129,6 +127,13 @@ void MainWindow::loginResult(int result)
         case 4:
             ui->infoLabel->setVisible(1);
             ui->infoLabel->setText("Liian monta väärää yritystä. Kortti on lukittu.");
+            break;
+        case 5://Login was successful, only debit account exists.
+            ui->idCardLine->clear();
+            ui->passwordLine->clear();
+            ui->infoLabel->setVisible(0);
+            ui->infoLabel->setText("");
+            moveToIndex(2);
             break;
     }
 }

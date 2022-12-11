@@ -84,15 +84,12 @@ private:
     QVector<TransactionData*> transactions;
     QString url;
     QNetworkReply* reply;
-    QNetworkReply* accountReply;
-    QNetworkAccessManager* accountManager;
     QByteArray responseData;
     QByteArray loginToken;
 
     void getNumberOfAccounts();
 
 signals:
-    //void changeWidget(int);
     void loginResult(int);
     void transactionsResult(int);
     void withdrawalResult(int result, double remainingBalance = 0.0);

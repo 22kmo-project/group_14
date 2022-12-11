@@ -240,7 +240,7 @@ void BankFunction::processCustomer(QNetworkReply* reply)
 
 
     networkAccessManager->deleteLater();
-    reply->deleteLater();    
+    reply->deleteLater();
 }
 
 void BankFunction::requestTransactions()
@@ -429,13 +429,13 @@ void BankFunction::numAccountSlot(QNetworkReply* reply)
     // Korttiin liitettyjen tilien lukumäärä selvillä ja osataan päättää mihin näkymään siirrytään..
 
     if (numberOfAccounts == 1) // If user has only one account associated with their card, it means they have only debit account and we can skip chooseAccount window
-    {
-        emit changeWidget(2);
+    {        
         accountType = 0;
         getAccountInfo();
+        emit loginResult(5);
     }
     else
     {
-        emit changeWidget(1);
+        emit loginResult(1);
     }
 }
