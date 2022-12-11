@@ -23,6 +23,7 @@ public:
 
 signals:
     void changeWidget(int);
+    void resetTime();
 
 private slots:
     void nextpageButton();

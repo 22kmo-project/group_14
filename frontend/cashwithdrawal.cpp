@@ -53,23 +53,25 @@ void CashWithdrawal::withdrawSlot(int result, double balance)
 
 void CashWithdrawal::button_back()
 {
+    emit resetTime();
     emit changeWidget(2);
     ui->stackedWidget->setCurrentIndex(1); // resets withdraw windows stacked widget index to first window
 }
 
 void CashWithdrawal::button_otheramount()
 {
+    emit resetTime();
     ui->stackedWidget->setCurrentIndex(3);
 }
 
 void CashWithdrawal::button_back2()
 {
+    emit resetTime();
     ui->stackedWidget->setCurrentIndex(1);
 }
 
 void CashWithdrawal::on_button_accept_clicked()
 {
-    //ui->stackedWidget->setCurrentIndex(1);
     selectedAmount = (ui->lineEdit->text()).toInt();
     emit setAmount(selectedAmount);
     emit withdrawSignal();
@@ -77,24 +79,28 @@ void CashWithdrawal::on_button_accept_clicked()
 
 void CashWithdrawal::button_20()
 {
+    emit resetTime();
     selectedAmount = 20;
     emit setAmount(selectedAmount);
 }
 
 void CashWithdrawal::button_40()
 {
+    emit resetTime();
     selectedAmount = 40;
     emit setAmount(selectedAmount);
 }
 
 void CashWithdrawal::button_50()
 {
+    emit resetTime();
     selectedAmount = 50;
     emit setAmount(selectedAmount);
 }
 
 void CashWithdrawal::button_100()
 {
+    emit resetTime();
     selectedAmount = 100;
     emit setAmount(selectedAmount);
 }

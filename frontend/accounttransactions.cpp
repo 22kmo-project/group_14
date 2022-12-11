@@ -43,6 +43,7 @@ void accountTransactions::setBankFunction(BankFunction* bankFunction)
 
 void accountTransactions::previouspageButton()
 {
+    emit resetTime();
     if (bankFunction->GetTransactions().size() > currentPage * rows)
     {
         currentPage += 1;
@@ -52,6 +53,7 @@ void accountTransactions::previouspageButton()
 
 void accountTransactions::nextpageButton()
 {
+    emit resetTime();
     if (currentPage > 1)
     {
         currentPage -= 1;

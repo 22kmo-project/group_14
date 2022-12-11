@@ -37,6 +37,7 @@ private slots:
     void moveToIndex(int index);
     void loginResult(int result);
     void timeComparison();
+    void resetTimer();
 
 private:
     Ui::MainWindow *ui;

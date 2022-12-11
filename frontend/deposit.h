@@ -44,6 +44,7 @@ private slots:
 signals:
     void changeWidget(int);
     void makeDeposit();
+    void resetTime();
 };
 
 #endif // DEPOSIT_H

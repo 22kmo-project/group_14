@@ -41,6 +41,7 @@ signals:
     void changeWidget(int);
     void makeDonation();
     void setAmount(int);
+    void resetTime();
 };
 
 #endif // CHARITY_H
