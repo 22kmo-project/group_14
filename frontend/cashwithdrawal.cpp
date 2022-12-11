@@ -18,6 +18,8 @@ CashWithdrawal::CashWithdrawal(QWidget* parent) :
     connect(ui->button_cancel2, &QPushButton::clicked, this, &CashWithdrawal::button_back2);
     connect(ui->button_back_2, &QPushButton::clicked, this, &CashWithdrawal::button_back2);
     connect(ui->buttonBack2, &QPushButton::clicked, this, &CashWithdrawal::button_back);
+    selectedAmount = 20;
+    ui->lineEdit->setText(QString::number(selectedAmount));
 }
 
 CashWithdrawal::~CashWithdrawal()
@@ -27,6 +29,7 @@ CashWithdrawal::~CashWithdrawal()
 
 void CashWithdrawal::withdraw()
 {
+    emit setAmount(selectedAmount);
     emit withdrawSignal();
 }
 
@@ -36,7 +39,7 @@ void CashWithdrawal::withdrawSlot(int result, double balance)
     {
     case 0:
         ui->stackedWidget->setCurrentIndex(2);
-        ui->label_4->setText("Virhe. Tililläsi ei ole tarpeeksi kateta.\n\n Nykyinen saldosi on: " + QString::number(balance) + " €");
+        ui->label_4->setText("Virhe. Tililläsi ei ole tarpeeksi katetta.\n\n Nykyinen saldosi on: " + QString::number(balance) + " €");
         break;
     case 1:
         ui->stackedWidget->setCurrentIndex(0);
