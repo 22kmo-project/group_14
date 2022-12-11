@@ -39,7 +39,7 @@ void CashWithdrawal::withdrawSlot(int result, double balance)
     {
     case 0:
         ui->stackedWidget->setCurrentIndex(2);
-        ui->label_4->setText("Virhe. Tililläsi ei ole tarpeeksi kateta.\n\n Nykyinen saldosi on: " + QString::number(balance) + " €");
+        ui->label_4->setText("Virhe. Tililläsi ei ole tarpeeksi katetta.\n\n Nykyinen saldosi on: " + QString::number(balance) + " €");
         break;
     case 1:
         ui->stackedWidget->setCurrentIndex(0);

@@ -13,7 +13,10 @@ charity::charity(QWidget* parent) :
     connect(ui->buttonBack3, &QPushButton::clicked, this, &charity::button_cancel);
     connect(ui->button_kohde1, &QPushButton::clicked, this, &charity::on_button_kohde1_clicked);
     connect(ui->button_kohde2, &QPushButton::clicked, this, &charity::on_button_kohde2_clicked);
-    connect(ui->button_kohde3, &QPushButton::clicked, this, &charity::on_button_kohde3_clicked);
+    connect(ui->button_kohde3, &QPushButton::clicked, this, &charity::on_button_kohde3_clicked);  
+    selectedAmount = 20;
+    ui->lineEdit_chooseamount->setText(QString::number(selectedAmount));
+    charityName = "Unicef";
 }
 
 charity::~charity()
