@@ -18,6 +18,8 @@ CashWithdrawal::CashWithdrawal(QWidget* parent) :
     connect(ui->button_cancel2, &QPushButton::clicked, this, &CashWithdrawal::button_back2);
     connect(ui->button_back_2, &QPushButton::clicked, this, &CashWithdrawal::button_back2);
     connect(ui->buttonBack2, &QPushButton::clicked, this, &CashWithdrawal::button_back);
+    selectedAmount = 20;
+    ui->lineEdit->setText(QString::number(selectedAmount));
 }
 
 CashWithdrawal::~CashWithdrawal()
@@ -27,6 +29,7 @@ CashWithdrawal::~CashWithdrawal()
 
 void CashWithdrawal::withdraw()
 {
+    emit setAmount(selectedAmount);
     emit withdrawSignal();
 }
 
