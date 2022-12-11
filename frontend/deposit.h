@@ -30,16 +30,8 @@ private:
 private slots:
     void depositSlot(int result);
     void buttonBack();
-    void buttonBills();
-    void buttonCoins();
-    void buttonCancel();
-    void buttonCancel2();
-    void buttonContinue();
-    void buttonContinue2();
+    void buttonBack2();
     void buttonConfirm();
-    void buttonBills2();
-    void buttonCoins2();
-    void buttonFinish();
 
 signals:
     void changeWidget(int);
