@@ -27,22 +27,7 @@ Deposit::~Deposit()
 void Deposit::buttonConfirm()
 {
     ui->stackedWidget->setCurrentIndex(3);
-
-    /*QString id_account = "1";
-    QString amount = "500";
-
-    QJsonObject jsonObj;
-    jsonObj.insert("id", id_account);
-    jsonObj.insert("amount", amount);
-
-    QString site_url=DatabaseURL::getBaseURL()+"/account/deposit";
-    QNetworkRequest request((site_url));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    depositManager = new QNetworkAccessManager(this);
-    connect(depositManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(depositSlot(QNetworkReply*)));
-    reply = depositManager->post(request, QJsonDocument(jsonObj).toJson());*/
     emit makeDeposit();
-
 }
 
 void Deposit::depositSlot(int result)
@@ -71,41 +56,49 @@ void Deposit::buttonBack()
 
 void Deposit::buttonBills()
 {
+    emit resetTime();
     ui->stackedWidget->setCurrentIndex(4);
 }
 
 void Deposit::buttonCoins()
 {
+    emit resetTime();
     ui->stackedWidget->setCurrentIndex(1);
 }
 
 void Deposit::buttonCancel()
 {
+    emit resetTime();
     ui->stackedWidget->setCurrentIndex(0);
 }
 
 void Deposit::buttonCancel2()
 {
+    emit resetTime();
     ui->stackedWidget->setCurrentIndex(0);
 }
 
 void Deposit::buttonContinue()
 {
+    emit resetTime();
     ui->stackedWidget->setCurrentIndex(2);
 }
 
 void Deposit::buttonContinue2()
 {
+    emit resetTime();
     ui->stackedWidget->setCurrentIndex(2);
 }
 
 void Deposit::buttonBills2()
 {
+    emit resetTime();
     ui->stackedWidget->setCurrentIndex(4);
 }
 
 void Deposit::buttonCoins2()
 {
+    emit resetTime();
     ui->stackedWidget->setCurrentIndex(1);
 }
 

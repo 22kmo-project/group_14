@@ -210,11 +210,12 @@ void BankFunction::processDeposit(QNetworkReply* reply)
             }
             else
             {
-                qDebug() << "Your transaction is complete. Your remaining balance is X €. Please take your cash and receipt.";
+                qDebug() << "Deposit successful.";
                 emit depositResult(1);
             }
         }
     }
+    getAccountInfo();
 }
 
 void BankFunction::makeDonation()
@@ -236,8 +237,11 @@ void BankFunction::makeDonation()
 
 void BankFunction::processCustomer(QNetworkReply* reply)
 {
-    customerName = reply->readAll();
+    responseData = reply->readAll();
+    QJsonDocument jsonResponse = QJsonDocument::fromJson(responseData);
 
+    // Saadaan käyttäjän nimet, saldo ja credit limitti
+    customerName = jsonResponse["name"].toString();
 
     networkAccessManager->deleteLater();
     reply->deleteLater();
@@ -366,6 +370,7 @@ void BankFunction::processDonation(QNetworkReply* reply)
             }
         }
     }
+    getAccountInfo();
 }
 
 void BankFunction::setAccountId(int accountId)

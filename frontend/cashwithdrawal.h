@@ -44,6 +44,7 @@ signals:
     void changeWidget(int);
     void setAmount(int);
     void withdrawSignal();
+    void resetTime();
 };
 
 #endif // CASHWITHDRAWAL_H

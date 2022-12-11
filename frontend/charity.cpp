@@ -61,15 +61,18 @@ void charity::button_cancel()
 
 void charity::on_button_kohde1_clicked()
 {
+    emit resetTime();
     charityName = "WWF";
 }
 
 void charity::on_button_kohde2_clicked()
 {
+    emit resetTime();
     charityName = "Unicef";
 }
 
 void charity::on_button_kohde3_clicked()
 {
+    emit resetTime();
     charityName = "Suomen Mielenterveys Ry";
 }

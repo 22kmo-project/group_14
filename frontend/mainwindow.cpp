@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->loginButton, &QPushButton::clicked, this, &MainWindow::loginClicked);
 
+    //Signal connections for changing between menus
     connect(&chooseAccount, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
     connect(&userMenu, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
     connect(&cashWithdrawal, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
@@ -22,6 +23,13 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&deposit, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
     connect(bankFunction, SIGNAL(changeWidget(int)), this, SLOT(moveToIndex(int)));
 
+    //Signal connections for resetting the timer for input timeouts that send the user back to either the usermenu or the login screen.
+    connect(&accountTransaction, SIGNAL(resetTime()), this, SLOT(resetTimer()));
+    connect(&charity, SIGNAL(resetTime()), this, SLOT(resetTimer()));
+    connect(&deposit, SIGNAL(resetTime()), this, SLOT(resetTimer()));
+    connect(&cashWithdrawal, SIGNAL(resetTime()), this, SLOT(resetTimer()));
+
+    //Signal to either choose credit or debit type account for the user in case there are more than one accounts connected to the card.
     connect(&chooseAccount, SIGNAL(chooseAccountType(int)), &userMenu, SLOT(switchedToUserMenu(int)));
 
     connect(this, SIGNAL(login(QString, QString)), bankFunction, SLOT(requestLogin(QString, QString)));
@@ -89,7 +97,6 @@ void MainWindow::loginClicked()
     QString password = ui->passwordLine->text();
 
     emit login(idCard, password);
-    //bankFunction->requestLogin(idCard, password);
 }
 
 void MainWindow::moveToIndex(int index)
@@ -140,10 +147,7 @@ void MainWindow::loginResult(int result)
 
 void MainWindow::timeComparison()
 {
-    //qDebug() << "lasketaan";
     time++; //lasketaan aikaa
-    //qDebug() << time;
-
     if (ui->stackedWidget->currentIndex() == 1 && time > 10) {
         ui->stackedWidget->setCurrentIndex(0);
         ptimer->stop(); //Choose account näkymässä 10s aikaa valita credit tai debit
@@ -158,4 +162,9 @@ void MainWindow::timeComparison()
         time = 0;
         ptimer->start();//Muissa näkymissä 10s ja palataan user menuun
     }
+}
+
+void MainWindow::resetTimer()
+{
+    time = 0;
 }
