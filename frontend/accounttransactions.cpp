@@ -41,7 +41,7 @@ void accountTransactions::setBankFunction(BankFunction* bankFunction)
     this->bankFunction = bankFunction;
 }
 
-void accountTransactions::nextpageButton()
+void accountTransactions::previouspageButton()
 {
     if (bankFunction->GetTransactions().size() > currentPage * rows)
     {
@@ -50,7 +50,7 @@ void accountTransactions::nextpageButton()
     }
 }
 
-void accountTransactions::previouspageButton()
+void accountTransactions::nextpageButton()
 {
     if (currentPage > 1)
     {
