@@ -245,7 +245,7 @@ font-weight:bold;</string>
 color:white;</string>
    </property>
    <property name="text">
-    <string>Good afternoon,</string>
+    <string>Tervetuloa,</string>
    </property>
   </widget>
  </widget>
